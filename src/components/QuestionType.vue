@@ -1,92 +1,250 @@
 <template>
-    <div class="type question-type">
-        <div class="question"><label :for="question.id">{{question.question}}</label><br></div>      
-           
-        <!-- Si la question appelle un Choix multiple comme réponse -->
-        <div v-if="question.type === 'multiple'" class="reponse">
-            <div v-for="reponse in question.reponses" :key="reponse.id" >
-              <input type="radio" :name="question.id" :value="reponse.reponse" :id="'rps-' + question.id + '-' + reponse.id" class="input-choices" v-on:keyup.enter="questionsIncrement">
-              <label :for="'rps-' + question.id + '-' + reponse.id" class="label-choices">{{reponse.reponse}}</label>
-            </div>
-        </div>
-
-                <!-- Si la question appelle une Date comme réponse -->
-        <div v-else-if="question.type === 'date'" class="reponse">
-          <input type="date" :name="question.id" class="input-date" v-on:keyup.enter="questionsIncrement">
-        </div>
-
-        <!-- Si la question appelle un StringInput comme réponse -->
-        <div v-else-if="question.type === 'string'" class="reponse" :pattern="question.pattern">
-          <input type="text" :name="question.id" class="input-string" v-on:keyup.enter="questionsIncrement">
-        </div>
-
-        <!-- Si la question appelle un TextInput comme réponse -->
-        <div v-else-if="question.type === 'text'" class="reponse">
-          <textarea :name="question.id" class="input-text"></textarea>
-        </div>
-
-        <!-- SINON : ERREUR -->
-        <div v-else>
-          <p>Erreur. Veuillez contacter l'administrateur.</p>
-        </div>
-
-        <div class="arrow arrow-submit" v-on:click="questionsDecrement">←    -  </div>
-        <div class="arrow arrow-previous" v-on:click="questionsIncrement">     →</div>
+  <div class="type anchor-offset question-type" :id="idHtml">
+    <div :class="'question question-' + question.id">
+      <label :for="question.id" v-html="question.question"></label>
+      <br />
     </div>
+
+    <!-- Si la question appelle un Choix multiple comme réponse -->
+    <div v-if="question.type === 'multiple'" class="reponse">
+      <div
+        v-for="reponse in question.reponses"
+        :key="reponse.id"
+        class="radiobtn"
+      >
+        <input
+          type="radio"
+          :name="question.id"
+          :value="reponse.reponse"
+          :id="'rps-' + question.id + '-' + reponse.id"
+          class="input-choices"
+          @change="scrollToNextQuestion()"
+          v-on:keyup.enter="scrollToNextQuestion()"
+          @input="updateAnswer"
+        />
+        <label
+          :for="'rps-' + question.id + '-' + reponse.id"
+          class="label-choices"
+          >{{ reponse.reponse }}</label
+        >
+      </div>
+    </div>
+
+    <!-- Si la question appelle une Date comme réponse -->
+    <div v-else-if="question.type === 'date'" class="reponse">
+      <input
+        type="date"
+        :name="question.id"
+        class="input-date"
+        v-on:keyup.enter="scrollToNextQuestion()"
+        :pattern="question.pattern"
+        @input="updateAnswer"
+      />
+    </div>
+
+    <!-- Si la question appelle un StringInput comme réponse -->
+    <div
+      v-else-if="question.type === 'string'"
+      class="reponse"
+      :pattern="question.pattern"
+    >
+      <input
+        type="text"
+        :name="question.id"
+        class="input-string"
+        v-on:keyup.enter="scrollToNextQuestion()"
+        :pattern="question.pattern"
+        @input="updateAnswer"
+      />
+    </div>
+
+    <!-- Si la question appelle un TextInput comme réponse -->
+    <div v-else-if="question.type === 'text'" class="reponse">
+      <div class="textarea-container">
+        <textarea
+          :name="question.id"
+          rows="5"
+          cols="50"
+          class="input-text"
+          @input="updateAnswer"
+        ></textarea>
+        <div class="textarea-size"></div>
+      </div>
+    </div>
+
+    <!-- Si la question appelle un Confirmation comme réponse -->
+    <div v-else-if="question.type === 'confirmation'" class="reponse">
+      <div class="confirmation-message"></div>
+      <div class="confirmation-reponses">
+        <Button
+          v-for="(reponse, idx) in question.reponses"
+          :key="idx"
+          class="input-string"
+          :msg="reponse.text"
+          v-on:keyup.enter="scrollToNextQuestion()"
+          @click="updateAnswer"
+        />
+      </div>
+    </div>
+
+    <!-- SINON : ERREUR -->
+    <div v-else>
+      <p>Erreur. Veuillez contacter l'administrateur.</p>
+    </div>
+  </div>
 </template>
 
 <script>
-import store from '../store.js'
+import store from "../store.js";
+import Button from "./elements/Button.vue";
 
 export default {
   name: "QuestionType",
+  computed: {
+    questionsCounter: () => store.state.questionsCounter,
+    idHtml: function() {
+      return "type-" + this.$props.question.id;
+    },
+    idNextQuestion: function() {
+      var elem = $("#" + this.idHtml)
+        .closest(".item")
+        .next()
+        .find(".type");
+      return "#" + elem.attr("id");
+    }
+  },
   props: {
     question: Object
   },
   data() {
-      return {
-          
-      };
+    return {};
   },
   methods: {
-    submit: function(event) {
-      console.log('Clicked');
+    updateAnswer(e) {
+      this.$props.question.reponseDonnee = e.target.value;
+      this.$store.commit({
+        type: "updateAnswer",
+        reponseDonnee: e.target.value,
+        id: this.$props.question.id
+      });
     },
-    questionsIncrement: () => store.commit('questionsIncrement'),
-    questionsDecrement: () => store.commit('questionsDecrement')
+    scrollToNextQuestion: function() {
+      //let target = $(this.idNextQuestion);
+      //if (target.length) {
+      //  $("html, body")
+      //  .stop()
+      //  .animate({ scrollTop: target.offset().top }, 1500);
+      //}
+      window.location.href = this.idNextQuestion;
+      if ($(this.idNextQuestion).find("input")[0] !== "undefined") {
+        $(this.idNextQuestion).find("input")[0].focus();
+      }
+    }
+  },
+  components: {
+    Button
   }
 };
+
+/**
+ * ,
+  mounted: {
+    autogrowTextarea: function() {
+      // AUTO-GROWING TEXTAREA
+      var textContainer, textareaSize, input;
+      var autoSize = function() {
+        // also can use textContent or innerText
+        textareaSize.innerHTML = input.value + "\n";
+      };
+
+      document.addEventListener("DOMContentLoaded", function() {
+        textContainer = document.querySelector(".textarea-container");
+        textareaSize = textContainer.querySelector(".textarea-size");
+        input = textContainer.querySelector("textarea");
+
+        autoSize();
+        input.addEventListener("input", autoSize);
+      });
+    }
+  },
+ */
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-h3
-  margin 40px 0 0
 
-a
-  color #42b983
+.question, .reponse
+  width: 100%
+  max-width: 700px
 
 .type
+  align-items: center
   display: flex
   justify-content: center
-  align-items: center
-  width: 50%
-  margin: auto
+  flex-direction: column
+  text-align: left
+  margin-left: 200px
+  margin-right: auto
+  padding-top: 100px
 
-.question, .reponse, .arrow
-  display: block
-  float: left
+.question-type
+  height: 500px
+  width: 50%
+
 
 .question, .arrow
-  font-size: 3em
+  font-size: 1.6em
 
-input[type="date"], input[type="text"]
+input[type="date"], input[type="text"], textarea
   background: transparent
   border: none
   border-bottom: solid 1px gray
+  border-left: solid 1px gray
+  padding-left: 5px
   font-family: 'Avenir', Helevetica, Artial, sans-serif
   color: #2c3e50;
-  font-size: 3em
+  font-size: 1.2em
+  margin-top: 20px
+  outline: none;
+  max-width: 500px
+  width: 100%
 
 
+textarea
+  overflow-y:auto
+
+.confirmation-reponses
+  width: auto
+  display: flex
+  justify-content: center
+  margin: auto
+
+
+
+// Auto-growing <textarea>
+.textarea-container
+  position: relative
+  width: 50%
+
+textarea, .textarea-size {
+  //min-height: 25px;
+  box-sizing: border-box;
+  padding: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+textarea {
+  //height: 100%;
+  position: absolute;
+  //resize:none;
+  white-space: normal;
+}
+
+.textarea-size {
+  visibility: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 </style>

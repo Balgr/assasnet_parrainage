@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    questionsCounter: 0
+    questionsCounter: 0,
+    questions: Array
   },
   mutations: {
     questionsIncrement(state) {
@@ -17,6 +18,15 @@ export default new Vuex.Store({
       // Just remove one from questionsCounter
       state.questionsCounter--;
       console.log('Decremented');
+    },
+    updateAnswer(state, payload) {
+      /*var question = state.questions.find(function(element) {
+        return element.id === payload.id;
+      });
+      question.reponseDonnee = payload.reponseDonnee;*/
+      state.questions.questions.forEach((el, id) => {
+        if (el.id === payload.id) el.reponseDonnee = payload.reponseDonnee;
+      })
     }
   },
   actions: {}
