@@ -1,50 +1,50 @@
 {
   "questions": [
     {
-      "id": "KSUE9c3ksj3",
-      "title": "Bienvenue sur le formulaire de parrainage d'Assas.net !",
-      "content": "<p>Répond à quelques questions, et nous t'attribuerons le parrain / la marraine qui te correspond ! Prêt.e ? C'est parti !</p><p>Note : les données que tu nous confies ne seront pas partagés avec des tiers sans ton autorisation, évidemment.</p>",
-      "type": "welcome"
-    },
-    {
       "id": "P3Oigxjazq",
       "question": "On commence doucement... Ton prénom ?",
       "type": "string",
       "pattern": "[a-zA-Z0-9-]+",
-      "reponseDonnee": ""
+      "reponseDonnee": "",
+      "erreur": ""
     },
     {
       "id": "Efz8gtn6z9",
       "question": "Jusqu'ici tout va bien. Ton nom de famille ?",
       "type": "string",
       "pattern": "[a-zA-Z0-9-]+",
-      "reponseDonnee": ""
+      "reponseDonnee": "",
+      "erreur": ""
     },
     {
       "id": "5OKjkE49MS",
       "question": "Une adresse email ?",
       "type": "string",
-      "pattern": "",
-      "reponseDonnee": ""
+      "pattern": "email",
+      "reponseDonnee": "",
+      "erreur": ""
     },
     {
       "id": "jgskTRIlwL",
       "question": "Pour te contacter plus facilement, indique nous ton nom Facebook (si tu n'utilises pas Facebook, indique-le) !",
       "type": "string",
-      "reponseDonnee": ""
+      "reponseDonnee": "",
+      "erreur": ""
     },
     {
       "id": "D15UFZLwFq",
       "question": "Au passage, on n'oublie pas d'aller liker la page officielle d'Assas.net ! Un numéro de téléphone ?",
       "type": "string",
-      "pattern": "",
-      "reponseDonnee": ""
+      "pattern": "phone",
+      "reponseDonnee": "",
+      "erreur": ""
     },
     {
       "id": "uBo0agUKn6",
       "question": "Tu étudies...",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -69,6 +69,7 @@
       "question": "Et en quelle année ?",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -97,6 +98,7 @@
       "question": "En quelle équipe étais-tu en L1 ?",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -117,6 +119,7 @@
       "question": "Tu te définirais plutôt comme quelqu'un de...",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -135,6 +138,7 @@
       "question": "Pour te détendre, c'est plutôt...",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -158,6 +162,7 @@
       "question": "Une bonne soirée, en général, c'est...",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -181,6 +186,7 @@
       "question": "Pour se tenir au courant de l'actualité, rien de tel que...",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -201,6 +207,7 @@
       "question": "Et à la télé ?",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -221,6 +228,7 @@
       "question": "Ton attitude en TD ?",
       "type": "multiple",
       "reponseDonnee": "",
+      "erreur": "",
       "reponses": [
         { 
             "id" : 1,
@@ -241,12 +249,6 @@
       "question": "C'est dans la boîte ! Y'a-t-il quelque chose de particulier dont tu souhaiterais nous faire part, qui nous aiderait à t'attribuer le parrain/la marraine idéal(e) ? Si tu es étudiant étranger, en situation de handicap, ou autre, indique-le ici !",
       "type": "text",
       "reponseDonnee": ""
-    },
-    {
-      "id": "99rsvZG1yS",
-      "title": "Merci !",
-      "content": "<p>Merci pour tout !</p><p>Nous avons pris ta demande en compte (tu devrais recevoir un mail de confirmation sous peu), et te recontacterons très vite pour te communiquer l'identité de ton parrain / ta marraine.</p>",
-      "type": "welcome"
     }
   ]
 }

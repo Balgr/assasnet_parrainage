@@ -37,7 +37,7 @@
         :name="question.id"
         class="input-date"
         v-on:keyup.enter="scrollToNextQuestion()"
-        :pattern="question.pattern"
+        :type="question.pattern"
         @input="updateAnswer"
       />
     </div>
@@ -52,6 +52,7 @@
         type="text"
         :name="question.id"
         class="input-string"
+        placeholder="Entrez une réponse puis appuyez sur Entrée..."
         v-on:keyup.enter="scrollToNextQuestion()"
         :pattern="question.pattern"
         @input="updateAnswer"
@@ -65,6 +66,7 @@
           :name="question.id"
           rows="5"
           cols="50"
+          placeholder="Entrez une réponse..."
           class="input-text"
           @input="updateAnswer"
         ></textarea>
@@ -193,25 +195,28 @@ export default {
 
 
 .question, .arrow
-  font-size: 1.6em
+  font-size: 1.5em
+  margin-bottom 20px
+
 
 input[type="date"], input[type="text"], textarea
   background: transparent
   border: none
   border-bottom: solid 1px gray
-  border-left: solid 1px gray
   padding-left: 5px
-  font-family: 'Avenir', Helevetica, Artial, sans-serif
+  font-family: 'Karla', Helevetica, Artial, sans-serif
   color: #2c3e50;
   font-size: 1.2em
-  margin-top: 20px
   outline: none;
   max-width: 500px
   width: 100%
 
+input[type="date"], input[type="text"]
+  height: 40px
 
 textarea
-  overflow-y:auto
+  overflow-y auto
+  border-left solid 1px gray
 
 .confirmation-reponses
   width: auto

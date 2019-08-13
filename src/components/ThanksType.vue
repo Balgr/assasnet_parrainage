@@ -5,7 +5,7 @@
       <div class="thanks-content" v-html="thanks.content"></div>
     </div>
     <div class="wrapper-button">
-      <Button @click.native="fadeOutAndDisappear" msg="Commencer" />
+      <Button @click.native="redirectToFacebook" msg="Emmenez-moi" />
     </div>
   </div>
 </template>
@@ -16,40 +16,25 @@ import Button from "./elements/Button.vue";
 
 export default {
   name: "ThanksType",
-  computed: {
-    questionsCounter: () => store.state.questionsCounter,
-    idHtml: function() {
-      return "type-" + this.$props.thanks.id;
-    },
-    idNextQuestion: function() {
-      var elem = $("#" + this.idHtml)
-        .closest(".item")
-        .next()
-        .find(".type");
-      return "#" + elem.attr("id");
-    }
-  },
-  props: {
-    thanks: Object
-  },
-  data() {
+  data: function() {
     return {
-      
+      thanks: {
+        id: "99rsvZG1yS",
+        title: "Merci !",
+        content:
+          "<p>Merci pour tout !</p><p>Nous avons pris ta demande en compte (tu devrais recevoir un mail de confirmation sous peu), et te recontacterons très vite pour te communiquer l'identité de ton parrain / ta marraine.</p>",
+        type: "thanks"
+      }
     };
   },
+  computed: {
+    idHtml: function() {
+      return "type-" + this.$data.thanks.id;
+    }
+  },
   methods: {
-    submit: function(event) {
-      console.log("Clicked");
-    },
-    scrollToNextQuestion: function() {
-      window.location.href = this.idNextQuestion;
-      $(this.idNextQuestion)
-        .find("input")[0]
-        .focus();
-    },
-    fadeOutAndDisappear: function() {
-      console.log("#" + this.idHtml + ".fadeOut(1000)");
-      $("#" + this.idHtml).fadeOut(500);
+    redirectToFacebook: function(event) {
+      window.location.href = "http://google.fr/";
     }
   },
   components: {

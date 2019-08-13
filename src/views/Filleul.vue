@@ -1,20 +1,25 @@
 <template>
   <div class="home">
-    <vue-scroll-snap>
+    <vue-scroll-snap :fullscreen="true">
       <div class="content">
-        <form action="" method="POST">
-          <div
-            class="item"
-            v-for="question in questions.questions"
-            :key="question.id"
-          >
-            <WelcomeType
-              v-if="question.type === 'welcome'"
-              v-bind:welcome="question"
-            />
-            <QuestionType v-else v-bind:question="question" />
-          </div>
-        </form>
+        <div class="welcome-container">
+          <WelcomeType />
+        </div>
+        <div class="form-container">
+          <form action="" method="POST">
+            <div
+              class="item"
+              v-for="question in questions.questions"
+              :key="question.id"
+            >
+              <QuestionType v-bind:question="question" />
+            </div>
+            <Button class="item btn-submit" @click.native="submit" msg="Envoyer" />
+          </form>
+        </div>
+        <div class="thanks-container">
+          <ThanksType />
+        </div>
       </div>
     </vue-scroll-snap>
     <!--<QuestionType v-for="(question, key) in questions" :key="key" v-bind:question="question" />
@@ -29,6 +34,8 @@
 import VueScrollSnap from "vue-scroll-snap";
 import QuestionType from "@/components/QuestionType.vue";
 import WelcomeType from "@/components/WelcomeType.vue";
+import ThanksType from "@/components/ThanksType.vue";
+import Button from "@/components/elements/Button.vue";
 
 import store from "../store.js";
 
@@ -37,10 +44,24 @@ export default {
   computed: {
     questions: () => store.state.questions
   },
+  methods: {
+    submit: function() {
+      console.log("submit");
+      // On valide les différentes entrées du formulaire : si ça ne passe pas, on interrompt l'exécution sans rien envoyer et en prévenant l'utilisateur
+      if (validerFormulaire() === true) {
+        $(".gradientback").css("display", "none");
+        $(".form-container").fadeOut();
+        $(".thanks-container").fadeIn(500);
+      }
+      // Si ça passe, on fadeOut le formulaire et on affiche le .thanks-container à la place
+    }
+  },
   components: {
     VueScrollSnap,
     QuestionType,
-    WelcomeType
+    WelcomeType,
+    ThanksType,
+    Button
   }
 };
 </script>
@@ -58,7 +79,6 @@ export default {
   display: flex
   justify-content: flex-start
   flex-direction: column
-  margin-bottom: 500px
 
 
 .type
@@ -75,6 +95,10 @@ export default {
   height: 100%;
   width: 100%;
 
+.btn-submit
+  margin: auto
+  margin-top 200px
+
 .gradientback
   position:absolute;
   bottom:0px;
@@ -88,4 +112,12 @@ export default {
   background: -ms-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
   background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
   pointer-events: none;
+  display none // Ne s'affiche pas avec le WelcomeType ni le ThanksType
+
+.form-container
+  display none
+  margin-bottom 200px
+
+.thanks-container
+  display none
 </style>

@@ -33,7 +33,7 @@ import WelcomeType from "@/components/WelcomeType.vue";
 import store from "../store.js";
 
 export default {
-  name: "parrain",
+  name: "home",
   computed: {
     questions: () => store.state.questions
   },
@@ -58,7 +58,6 @@ export default {
   display: flex
   justify-content: flex-start
   flex-direction: column
-  margin-bottom: 500px
 
 
 .type

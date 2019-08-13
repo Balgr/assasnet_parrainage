@@ -1,6 +1,7 @@
 <template>
   <div class="type welcome-type" :id="idHtml">
     <div :class="'welcome welcome-' + welcome.id">
+      <img src="../assets/logo_assasnet.png" class="logo" />
       <h2 v-html="welcome.title"></h2>
       <div class="welcome-content" v-html="welcome.content"></div>
     </div>
@@ -19,7 +20,7 @@ export default {
   computed: {
     questionsCounter: () => store.state.questionsCounter,
     idHtml: function() {
-      return "type-" + this.$props.welcome.id;
+      return "type-" + this.$data.welcome.id;
     },
     idNextQuestion: function() {
       var elem = $("#" + this.idHtml)
@@ -30,26 +31,33 @@ export default {
     }
   },
   props: {
-    welcome: Object
-  },
+
+},
   data() {
     return {
-      
+      welcome: {
+        id: "KSUE9c3ksj3",
+        title: "Bienvenue sur le formulaire de parrainage d'Assas.net !",
+        content:
+          "<p>Répond à quelques questions, et nous t'attribuerons le parrain / la marraine qui te correspond ! Prêt.e ? C'est parti !</p><p>Note : les données que tu nous confies ne seront pas partagés avec des tiers sans ton autorisation, évidemment.</p>",
+        type: "welcome"
+      }
     };
   },
   methods: {
-    submit: function(event) {
-      console.log("Clicked");
-    },
-    scrollToNextQuestion: function() {
-      window.location.href = this.idNextQuestion;
-      $(this.idNextQuestion)
-        .find("input")[0]
-        .focus();
-    },
     fadeOutAndDisappear: function() {
-      console.log("#" + this.idHtml + ".fadeOut(1000)");
-      $("#" + this.idHtml).fadeOut(500);
+      // On affiche le formulaire et le .gradientback, et on efface le WelcomeType
+      $("#" + this.idHtml).fadeOut(700);
+      $(".gradientback").fadeIn(700);
+      $(".form-container").fadeIn(700);
+
+      // On met le focus sur le premier input du formulaire
+      setTimeout(function() {
+        // eslint-disable-next-line no-undef
+        $(this.idNextQuestion)
+          .find("input")
+          .focus();
+      }, 700);
     }
   },
   components: {
@@ -102,6 +110,10 @@ a
 .welcome
   background: transparent
   border: none
-  font-family: 'Avenir', Helevetica, Arial, sans-serif
+  font-family: 'Karla', Helevetica, Arial, sans-serif
   color: #2c3e50;
+
+.logo
+  width: 200px
+  margin-bottom: 30px
 </style>
