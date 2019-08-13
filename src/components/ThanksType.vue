@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     redirectToFacebook: function(event) {
-      window.location.href = "http://google.fr/";
+      window.location.href = "http://facebook.fr/OfficielAssas.net";
     }
   },
   components: {

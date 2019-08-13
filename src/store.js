@@ -9,16 +9,6 @@ export default new Vuex.Store({
     questions: Array
   },
   mutations: {
-    questionsIncrement(state) {
-      // Just add one to questionsCounter
-      state.questionsCounter++;
-      console.log('Incremented');
-    },
-    questionsDecrement(state) {
-      // Just remove one from questionsCounter
-      state.questionsCounter--;
-      console.log('Decremented');
-    },
     updateAnswer(state, payload) {
       /*var question = state.questions.find(function(element) {
         return element.id === payload.id;
@@ -26,7 +16,17 @@ export default new Vuex.Store({
       question.reponseDonnee = payload.reponseDonnee;*/
       state.questions.questions.forEach((el, id) => {
         if (el.id === payload.id) el.reponseDonnee = payload.reponseDonnee;
-      })
+      });
+    },
+    updateErrors(state, payload) {
+      state.questions.questions.forEach((el, id) => {
+        if (el.id === payload.id) el.erreurs.push(payload.erreur);
+      });
+    },
+    resetErrorsForAllQuestions(state, payload) {
+      state.questions.questions.forEach((el, id) => {
+        el.erreurs = [];
+      });
     }
   },
   actions: {}

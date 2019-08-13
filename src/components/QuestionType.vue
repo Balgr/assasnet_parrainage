@@ -14,6 +14,7 @@
       >
         <input
           type="radio"
+          :required="question.obligatoire"
           :name="question.id"
           :value="reponse.reponse"
           :id="'rps-' + question.id + '-' + reponse.id"
@@ -36,8 +37,8 @@
         type="date"
         :name="question.id"
         class="input-date"
+        :required="question.obligatoire"
         v-on:keyup.enter="scrollToNextQuestion()"
-        :type="question.pattern"
         @input="updateAnswer"
       />
     </div>
@@ -46,15 +47,16 @@
     <div
       v-else-if="question.type === 'string'"
       class="reponse"
-      :pattern="question.pattern"
+      :required="question.obligatoire"
+      :type="question.format"
     >
       <input
-        type="text"
+        :type="type"
         :name="question.id"
         class="input-string"
         placeholder="Entrez une réponse puis appuyez sur Entrée..."
         v-on:keyup.enter="scrollToNextQuestion()"
-        :pattern="question.pattern"
+        :required="question.obligatoire"
         @input="updateAnswer"
       />
     </div>
@@ -64,6 +66,7 @@
       <div class="textarea-container">
         <textarea
           :name="question.id"
+          :required="question.obligatoire"
           rows="5"
           cols="50"
           placeholder="Entrez une réponse..."
@@ -103,7 +106,10 @@ import Button from "./elements/Button.vue";
 export default {
   name: "QuestionType",
   computed: {
-    questionsCounter: () => store.state.questionsCounter,
+    type: function() {
+      if(typeof this.$props.question.format !== 'undefined') return this.$props.question.format
+      return "text";
+    },
     idHtml: function() {
       return "type-" + this.$props.question.id;
     },
@@ -199,7 +205,7 @@ export default {
   margin-bottom 20px
 
 
-input[type="date"], input[type="text"], textarea
+input[type="date"], input[type="text"], input[type="email"], input[type="tel"], textarea
   background: transparent
   border: none
   border-bottom: solid 1px gray

@@ -14,7 +14,11 @@
             >
               <QuestionType v-bind:question="question" />
             </div>
-            <Button class="item btn-submit" @click.native="submit" msg="Envoyer" />
+            <Button
+              class="item btn-submit"
+              @click.native="submit"
+              msg="Envoyer"
+            />
           </form>
         </div>
         <div class="thanks-container">
@@ -48,12 +52,59 @@ export default {
     submit: function() {
       console.log("submit");
       // On valide les différentes entrées du formulaire : si ça ne passe pas, on interrompt l'exécution sans rien envoyer et en prévenant l'utilisateur
-      if (validerFormulaire() === true) {
+      if (this.validerFormulaire() === true) {
         $(".gradientback").css("display", "none");
         $(".form-container").fadeOut();
         $(".thanks-container").fadeIn(500);
+      } else {
+        console.log("ERREUR : formulaire invalide");
       }
       // Si ça passe, on fadeOut le formulaire et on affiche le .thanks-container à la place
+    },
+    validerFormulaire() {
+      // On efface toutes les erreurs précédentes
+      this.$store.commit({
+        type: "resetErrorsForAllQuestions"
+      });
+
+      this.questions.questions.forEach(function(question) {
+        // On vérifie que la question a été répondue (si elle est obligatoire)
+        if (question.obligatoire === true && question.reponseDonnee === "") {
+          this.$store.commit({
+            type: "updateErrors",
+            erreur: "Cette question est obligatoire.",
+            id: question.id
+          });
+          console.log("Réponse obligatoire : " + question.question);
+        }
+        // On vérifie que le pattern de la réponse est correct
+        else if (
+          question.pattern != "" &&
+          RegExp(question.pattern).test(question.reponseDonnee) !== true
+        ) {
+          this.$store.commit({
+            type: "updateErrors",
+            erreur: "Le format de la réponse est incorrect.",
+            id: question.id
+          });
+        }
+        // Si la question propose des choix multiples, on vérifie que la réponse donnée est bien l'un des choix proposés et pas autre chose
+        if (question.type === "multiple" && question.reponseDonnee !== "") {
+          if (
+            question.reponses.filter(r => r.reponse === question.reponseDonnee)
+              .length == 0
+          ) {
+            this.$store.commit({
+              type: "updateErrors",
+              erreur: "Veuillez sélectionner une réponse existante",
+              id: question.id
+            });
+            console.log("Choix incorrect : " + question.reponseDonnee);
+          }
+        }
+      }, this);
+
+      return false;
     }
   },
   components: {

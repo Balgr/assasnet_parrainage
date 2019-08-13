@@ -4,47 +4,55 @@
       "id": "P3Oigxjazq",
       "question": "On commence doucement... Ton prénom ?",
       "type": "string",
-      "pattern": "[a-zA-Z0-9-]+",
+      "pattern": "",
       "reponseDonnee": "",
-      "erreur": ""
+      "obligatoire": true,
+      "erreurs": ""
     },
     {
       "id": "Efz8gtn6z9",
       "question": "Jusqu'ici tout va bien. Ton nom de famille ?",
       "type": "string",
-      "pattern": "[a-zA-Z0-9-]+",
+      "pattern": "",
       "reponseDonnee": "",
-      "erreur": ""
+      "obligatoire": true,
+      "erreurs": ""
     },
     {
       "id": "5OKjkE49MS",
       "question": "Une adresse email ?",
       "type": "string",
-      "pattern": "email",
+      "pattern": "",
       "reponseDonnee": "",
-      "erreur": ""
+      "format": "email",
+      "obligatoire": true,
+      "erreurs": ""
     },
     {
       "id": "jgskTRIlwL",
       "question": "Pour te contacter plus facilement, indique nous ton nom Facebook (si tu n'utilises pas Facebook, indique-le) !",
       "type": "string",
       "reponseDonnee": "",
-      "erreur": ""
+      "obligatoire": true,
+      "erreurs": ""
     },
     {
       "id": "D15UFZLwFq",
       "question": "Au passage, on n'oublie pas d'aller liker la page officielle d'Assas.net ! Un numéro de téléphone ?",
       "type": "string",
-      "pattern": "phone",
+      "pattern": "",
+      "format": "tel",
+      "obligatoire": true,
       "reponseDonnee": "",
-      "erreur": ""
+      "erreurs": ""
     },
     {
       "id": "uBo0agUKn6",
       "question": "Tu étudies...",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -69,7 +77,8 @@
       "question": "Et en quelle année ?",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -98,7 +107,8 @@
       "question": "En quelle équipe étais-tu en L1 ?",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -119,7 +129,8 @@
       "question": "Tu te définirais plutôt comme quelqu'un de...",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -138,7 +149,8 @@
       "question": "Pour te détendre, c'est plutôt...",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -162,7 +174,8 @@
       "question": "Une bonne soirée, en général, c'est...",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -186,7 +199,8 @@
       "question": "Pour se tenir au courant de l'actualité, rien de tel que...",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -207,7 +221,8 @@
       "question": "Et à la télé ?",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "erreurs": "",
+      "obligatoire": true,
       "reponses": [
         { 
             "id" : 1,
@@ -228,7 +243,8 @@
       "question": "Ton attitude en TD ?",
       "type": "multiple",
       "reponseDonnee": "",
-      "erreur": "",
+      "obligatoire": true,
+      "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
@@ -248,6 +264,8 @@
       "id": "H8wpHwdeZk",
       "question": "C'est dans la boîte ! Y'a-t-il quelque chose de particulier dont tu souhaiterais nous faire part, qui nous aiderait à t'attribuer le parrain/la marraine idéal(e) ? Si tu es étudiant étranger, en situation de handicap, ou autre, indique-le ici !",
       "type": "text",
+      "erreurs": "",
+      "obligatoire": false,
       "reponseDonnee": ""
     }
   ]
