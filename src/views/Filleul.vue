@@ -65,7 +65,6 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log("submit");
       // On valide les différentes entrées du formulaire : si ça ne passe pas, on interrompt l'exécution sans rien envoyer et en prévenant l'utilisateur
       if (this.validerFormulaire() === true) {
         this.craftPostRequest();
@@ -73,19 +72,11 @@ export default {
         HTTP.post("filleul", {
           body: this.$data.postBody
         });
-
-        console.log(this.$data.postBody);
-
         // Si on reçoit une réponse 201 de l'API, on affiche le message de remerciement.
         $(".gradientback").css("display", "none");
         $(".form-container").fadeOut();
         $(".thanks-container").fadeIn(500);
-
-        // Sinon, on affiche une erreur.
-      } else {
-        console.log("ERREUR : formulaire invalide");
       }
-      // Si ça passe, on fadeOut le formulaire et on affiche le .thanks-container à la place
     },
     validerFormulaire() {
       // On efface toutes les erreurs précédentes
@@ -102,7 +93,6 @@ export default {
             erreur: "Cette question est obligatoire.",
             id: question.id
           });
-          console.log("Réponse obligatoire : " + question.question);
           if (this.$data.erreurs.length === 0) {
             this.$data.erreurs.push(
               "Le formulaire n'est pas valide. Veuillez corriger les erreurs."
@@ -184,17 +174,12 @@ export default {
       this.questions.questions.forEach(function(q) {
         if (typeof q.scoreObtenu !== 'undefined') {
           this.$data.score += q.scoreObtenu;
-          console.log("Score pré coeff = " + this.$data.score);
         } else if (typeof q.coefficientObtenu !== 'undefined') {
           this.$data.coefficient = q.coefficientObtenu;
         }
       }, this);
 
-      console.log("Score pré coeff = " + this.$data.score);
-
       this.$data.postBody["score"] = this.$data.score * this.$data.coefficient;
-
-      console.log("Score post coeff = " + this.$data.score);
     }
   },
   components: {

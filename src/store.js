@@ -11,9 +11,7 @@ export default new Vuex.Store({
   },
   mutations: {
     /*loadData(state, payload) {
-      console.log("./assets/json/questions_" + payload.form + ".json");
       state.questions = require("./assets/json/questions_" + payload.form + ".json");
-      console.log(state.questions);
     },*/
     updateAnswerParrain(state, payload) {
       /*var question = state.questions.find(function(element) {
