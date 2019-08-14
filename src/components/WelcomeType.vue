@@ -1,12 +1,24 @@
 <template>
   <div class="type welcome-type" :id="idHtml">
-    <div :class="'welcome welcome-' + welcome.id">
-      <img src="../assets/logo_assasnet.png" class="logo" />
-      <h2 v-html="welcome.title"></h2>
-      <div class="welcome-content" v-html="welcome.content"></div>
+    <div class="welcome" v-if="parrain === true">
+      <div :class="'welcome-' + welcomeParrain.id">
+        <img src="../assets/logo_assasnet.png" class="logo" />
+        <h2 v-html="welcomeParrain.title"></h2>
+        <div class="welcome-content" v-html="welcomeParrain.content"></div>
+      </div>
+      <div class="wrapper-button">
+        <Button @click.native="fadeOutAndDisappear" msg="Commencer" />
+      </div>
     </div>
-    <div class="wrapper-button">
-      <Button @click.native="fadeOutAndDisappear" msg="Commencer" />
+    <div class="welcome" v-else-if="filleul === true">
+      <div :class="'welcome-' + welcomeFilleul.id">
+        <img src="../assets/logo_assasnet.png" class="logo" />
+        <h2 v-html="welcomeFilleul.title"></h2>
+        <div class="welcome-content" v-html="welcomeFilleul.content"></div>
+      </div>
+      <div class="wrapper-button">
+        <Button @click.native="fadeOutAndDisappear" msg="Commencer" />
+      </div>
     </div>
   </div>
 </template>
@@ -20,7 +32,7 @@ export default {
   computed: {
     questionsCounter: () => store.state.questionsCounter,
     idHtml: function() {
-      return "type-" + this.$data.welcome.id;
+      return "type-" + this.$data.welcomeFilleul.id;
     },
     idNextQuestion: function() {
       var elem = $("#" + this.idHtml)
@@ -31,11 +43,19 @@ export default {
     }
   },
   props: {
-
-},
+    parrain: Boolean,
+    filleul: Boolean
+  },
   data() {
     return {
-      welcome: {
+      welcomeParrain: {
+        id: "KSUE9c3ksj3",
+        title: "Bienvenue sur le formulaire de parrainage d'Assas.net !",
+        content:
+          "<p>Répond à quelques questions, et nous t'attribuerons le/la filleul(e) qui te correspond ! Prêt.e ? C'est parti !</p><p>Note : les données que tu nous confies ne seront pas partagés avec des tiers sans ton autorisation, évidemment.</p>",
+        type: "welcome"
+      },
+      welcomeFilleul: {
         id: "KSUE9c3ksj3",
         title: "Bienvenue sur le formulaire de parrainage d'Assas.net !",
         content:
@@ -71,6 +91,7 @@ export default {
 h2
   font-size: 3em
   width 50%
+  line-height 1.1em
   margin auto
 
 a
@@ -96,7 +117,6 @@ a
   display: block
 
 .welcome-titre
-  font-size: 1.6em
   text-align: center
 
 .welcome-description
@@ -116,4 +136,36 @@ a
 .logo
   width: 200px
   margin-bottom: 30px
+
+@media screen and (max-width: 599px)
+  h2
+    width: 80%
+    line-height 1.1em
+    font-size: 1.5em
+  .logo
+    width: 150px
+  .welcome-content
+    font-size 1em
+
+
+@media screen and (min-width: 600px) and (max-width: 767px)
+  h2
+    width: 100%
+    line-height 1.1em
+    font-size: 2em
+
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+  h2
+    width: 100%
+    line-height 1.1em
+    font-size: 2em
+
+@media screen and (min-width: 992px) and (max-width: 1199px)
+  h2
+    width 75%
+
+@media screen and (min-width: 1200px)
+  h2
+    width: 50%
 </style>

@@ -38,7 +38,7 @@
     },
     {
       "id": "D15UFZLwFq",
-      "question": "Au passage, on n'oublie pas d'aller liker la page officielle d'Assas.net ! Un numéro de téléphone ?",
+      "question": "Au passage, on n'oublie pas d'aller liker <a href=\"https://facebook.com/OfficielAssasNet\">la page officielle d'Assas.net</a> ! Un numéro de téléphone ?",
       "type": "string",
       "pattern": "",
       "format": "tel",
@@ -104,7 +104,7 @@
     },
     {
       "id": "t0mP0MWg22",
-      "question": "En quelle équipe étais-tu en L1 ?",
+      "question": "En quelle équipe es-tu ?",
       "type": "multiple",
       "reponseDonnee": "",
       "obligatoire": true,
@@ -128,7 +128,9 @@
       "id": "YsCMF8Q0el",
       "question": "Tu te définirais plutôt comme quelqu'un de...",
       "type": "multiple",
+      "resultat": "coefficient",
       "reponseDonnee": "",
+      "coefficientObtenu": 0,
       "obligatoire": true,
       "erreurs": "",
       "reponses": [
@@ -148,7 +150,9 @@
       "id": "LAcVKNDEHb",
       "question": "Pour te détendre, c'est plutôt...",
       "type": "multiple",
+      "resultat": "score",
       "reponseDonnee": "",
+      "scoreObtenu": 0,
       "obligatoire": true,
       "erreurs": "",
       "reponses": [
@@ -174,6 +178,8 @@
       "question": "Une bonne soirée, en général, c'est...",
       "type": "multiple",
       "reponseDonnee": "",
+      "resultat": "score",
+      "scoreObtenu": 0,
       "obligatoire": true,
       "erreurs": "",
       "reponses": [
@@ -198,21 +204,26 @@
       "id": "QpQcbfBSsU",
       "question": "Pour se tenir au courant de l'actualité, rien de tel que...",
       "type": "multiple",
+      "resultat": "score",
+      "scoreObtenu": 0,
       "reponseDonnee": "",
       "obligatoire": true,
       "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
-            "reponse": "Le Monde (classique)"
+            "reponse": "Le Monde (classique)",
+            "score": -5
         },  
         { 
             "id" : 2,
-            "reponse": "Les Echos (team chemise blanche - mocassins)"
+            "reponse": "Les Echos (team chemise blanche - mocassins)",
+            "score": -10
         },  
         { 
             "id" : 3,
-            "reponse": "Closer (faut de tout pour faire un monde, hein)"
+            "reponse": "Closer (faut de tout pour faire un monde, hein)",
+            "score": 10
         }
       ]
     },
@@ -220,21 +231,26 @@
       "id": "qNpGPAvAFI",
       "question": "Et à la télé ?",
       "type": "multiple",
+      "resultat": "score",
       "reponseDonnee": "",
+      "scoreObtenu": 0,
       "erreurs": "",
       "obligatoire": true,
       "reponses": [
         { 
             "id" : 1,
-            "reponse": "TPMP (eh oui mes p'tites beautés)"
+            "reponse": "TPMP (eh oui mes p'tites beautés)",
+            "score": 5
         },  
         { 
             "id" : 2,
-            "reponse": "Arte (t'façon, c'est clairement la meilleure chaîne, hein ? HEIN ?)"
+            "reponse": "Arte (t'façon, c'est clairement la meilleure chaîne, hein ? HEIN ?)",
+            "score": -5
         },  
         { 
             "id" : 3,
-            "reponse": "Télé ? Jamais entendu parler !"
+            "reponse": "Télé ? Jamais entendu parler !",
+            "score": 10
         }
       ]
     },
@@ -242,21 +258,26 @@
       "id": "pUCefWxPDR",
       "question": "Ton attitude en TD ?",
       "type": "multiple",
+      "resultat": "score",
+      "scoreObtenu": 0,
       "reponseDonnee": "",
       "obligatoire": true,
       "erreurs": "",
       "reponses": [
         { 
             "id" : 1,
-            "reponse": "Toujours au 1er rang (j'ai pas trouvé de blague, déso)"
+            "reponse": "Toujours au 1er rang (j'ai pas trouvé de blague, déso)",
+            "score": -10
         },  
         { 
             "id" : 2,
-            "reponse": "Peu importe, tant que le chargé m'interroge pas"
+            "reponse": "Peu importe, tant que le chargé m'interroge pas",
+            "score": 0
         },  
         { 
             "id" : 3,
-            "reponse": "Hein ?? Y'avait TD !?"
+            "reponse": "Hein ?? Y'avait TD !?",
+            "score": 10
         }
       ]
     },

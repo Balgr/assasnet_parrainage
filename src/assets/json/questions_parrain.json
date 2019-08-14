@@ -1,0 +1,293 @@
+{
+    "questions": [
+      {
+        "id": "P3Oigxjazq",
+        "question": "On commence doucement... Ton prénom ?",
+        "type": "string",
+        "pattern": "",
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": ""
+      },
+      {
+        "id": "Efz8gtn6z9",
+        "question": "Jusqu'ici tout va bien. Ton nom de famille ?",
+        "type": "string",
+        "pattern": "",
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": ""
+      },
+      {
+        "id": "5OKjkE49MS",
+        "question": "Une adresse email ?",
+        "type": "string",
+        "pattern": "",
+        "reponseDonnee": "",
+        "format": "email",
+        "obligatoire": true,
+        "erreurs": ""
+      },
+      {
+        "id": "jgskTRIlwL",
+        "question": "Pour te contacter plus facilement, indique nous ton nom Facebook (si tu n'utilises pas Facebook, indique-le) !",
+        "type": "string",
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": ""
+      },
+      {
+        "id": "D15UFZLwFq",
+        "question": "Au passage, on n'oublie pas d'aller liker <a href=\"https://facebook.com/OfficielAssasNet\">la page officielle d'Assas.net</a> ! Un numéro de téléphone ?",
+        "type": "string",
+        "pattern": "",
+        "format": "tel",
+        "obligatoire": true,
+        "reponseDonnee": "",
+        "erreurs": ""
+      },
+      {
+        "id": "uBo0agUKn6",
+        "question": "Tu étudies...",
+        "type": "multiple",
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Le droit (so mainstream)"
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Économie-Gestion / AES (c'est sous-côté)"
+          },
+          { 
+              "id" : 3,
+              "reponse": "L'info-com (il en faut, hein...)"
+          },
+          {
+              "id": 4,
+              "reponse": "Le management (oui, il y a du management à Assas)"
+          }
+        ]
+      },
+      {
+        "id": "kc1qjzOXfe",
+        "question": "Et en quelle année ?",
+        "type": "multiple",
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Licence 1"
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Licence 2"
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Licence 3"
+          },  
+          { 
+              "id" : 4,
+              "reponse": "Master 1"
+          },  
+          { 
+              "id" : 5,
+              "reponse": "Master 2"
+          }
+        ]
+      },
+      {
+        "id": "t0mP0MWg22",
+        "question": "En quelle équipe étais-tu en L1 ?",
+        "type": "multiple",
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Equipe 1 (A à J)"
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Equipe 2 (K à T)"
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Equipe 3 (U à Z)"
+          }
+        ]
+      },
+      {
+        "id": "YsCMF8Q0el",
+        "question": "Tu te définirais plutôt comme quelqu'un de...",
+        "type": "multiple",
+        "resultat": "coefficient",
+        "reponseDonnee": "",
+        "coefficientObtenu": 0,
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Sérieux",
+              "coefficient": 0.9
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Extraverti",
+              "coefficient": 1.1
+          }
+        ]
+      },
+      {
+        "id": "LAcVKNDEHb",
+        "question": "Pour te détendre, c'est plutôt...",
+        "type": "multiple",
+        "resultat": "score",
+        "reponseDonnee": "",
+        "scoreObtenu": 0,
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Jeux-vidéos (de Street Fighter à Animal Crossing)",
+              "score": 0
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Arts et théâtre (parce qu'être culturé, c'est important)",
+              "score": 10
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Sport (manger n'est pas un sport)",
+              "score": 5
+          }
+        ]
+      },
+      {
+        "id": "XzsSGoj42c",
+        "question": "Une bonne soirée, en général, c'est...",
+        "type": "multiple",
+        "reponseDonnee": "",
+        "resultat": "score",
+        "scoreObtenu": 0,
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "En boîte (ambiance-toi sur Djadja, promis, personne ne juge)",
+              "score": 10
+          },  
+          { 
+              "id" : 2,
+              "reponse": "En appartement (posey sur le canapey avec la team)",
+              "score": 5
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Verre en terrasse (un verre, mais pas 15... bon, ok, allez, deux verres, mais pas...)",
+              "score": 5
+          }
+        ]
+      },
+      {
+        "id": "QpQcbfBSsU",
+        "question": "Pour se tenir au courant de l'actualité, rien de tel que...",
+        "type": "multiple",
+        "resultat": "score",
+        "scoreObtenu": 0,
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Le Monde (classique)",
+              "score": -5
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Les Echos (team chemise blanche - mocassins)",
+              "score": -10
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Closer (faut de tout pour faire un monde, hein)",
+              "score": 10
+          }
+        ]
+      },
+      {
+        "id": "qNpGPAvAFI",
+        "question": "Et à la télé ?",
+        "type": "multiple",
+        "resultat": "score",
+        "reponseDonnee": "",
+        "scoreObtenu": 0,
+        "erreurs": "",
+        "obligatoire": true,
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "TPMP (eh oui mes p'tites beautés)",
+              "score": 5
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Arte (t'façon, c'est clairement la meilleure chaîne, hein ? HEIN ?)",
+              "score": -5
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Télé ? Jamais entendu parler !",
+              "score": 10
+          }
+        ]
+      },
+      {
+        "id": "pUCefWxPDR",
+        "question": "Ton attitude en TD ?",
+        "type": "multiple",
+        "resultat": "score",
+        "scoreObtenu": 0,
+        "reponseDonnee": "",
+        "obligatoire": true,
+        "erreurs": "",
+        "reponses": [
+          { 
+              "id" : 1,
+              "reponse": "Toujours au 1er rang (j'ai pas trouvé de blague, déso)",
+              "score": -10
+          },  
+          { 
+              "id" : 2,
+              "reponse": "Peu importe, tant que le chargé m'interroge pas",
+              "score": 0
+          },  
+          { 
+              "id" : 3,
+              "reponse": "Hein ?? Y'avait TD !?",
+              "score": 10
+          }
+        ]
+      },
+      {
+        "id": "H8wpHwdeZk",
+        "question": "C'est dans la boîte ! Y'a-t-il quelque chose de particulier dont tu souhaiterais nous faire part, qui nous aiderait à t'attribuer le parrain/la marraine idéal(e) ? Si tu es étudiant étranger, en situation de handicap, ou autre, indique-le ici !",
+        "type": "text",
+        "erreurs": "",
+        "obligatoire": false,
+        "reponseDonnee": ""
+      }
+    ]
+  }

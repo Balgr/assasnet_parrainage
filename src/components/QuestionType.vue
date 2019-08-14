@@ -92,9 +92,16 @@
       </div>
     </div>
 
-    <!-- SINON : ERREUR -->
+    <!-- SINON : ERREUR 
     <div v-else>
       <p>Erreur. Veuillez contacter l'administrateur.</p>
+    </div>-->
+    <div class="erreurs">
+      <ul>
+        <li v-for="(erreur, idx) in question.erreurs" :key="idx">
+          {{ erreur }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -107,7 +114,8 @@ export default {
   name: "QuestionType",
   computed: {
     type: function() {
-      if(typeof this.$props.question.format !== 'undefined') return this.$props.question.format
+      if (typeof this.$props.question.format !== "undefined")
+        return this.$props.question.format;
       return "text";
     },
     idHtml: function() {
@@ -122,7 +130,9 @@ export default {
     }
   },
   props: {
-    question: Object
+    question: Object,
+    parrain: Boolean,
+    filleul: Boolean
   },
   data() {
     return {};
@@ -130,22 +140,32 @@ export default {
   methods: {
     updateAnswer(e) {
       this.$props.question.reponseDonnee = e.target.value;
-      this.$store.commit({
-        type: "updateAnswer",
-        reponseDonnee: e.target.value,
-        id: this.$props.question.id
-      });
+      if (this.$props.parrain === true) {
+        this.$store.commit({
+          type: "updateAnswerParrain",
+          reponseDonnee: e.target.value,
+          id: this.$props.question.id
+        });
+      } else if (this.$props.filleul === true) {
+        this.$store.commit({
+          type: "updateAnswerFilleul",
+          reponseDonnee: e.target.value,
+          id: this.$props.question.id
+        });
+      }
     },
     scrollToNextQuestion: function() {
-      //let target = $(this.idNextQuestion);
-      //if (target.length) {
-      //  $("html, body")
-      //  .stop()
-      //  .animate({ scrollTop: target.offset().top }, 1500);
-      //}
       window.location.href = this.idNextQuestion;
-      if ($(this.idNextQuestion).find("input")[0] !== "undefined") {
-        $(this.idNextQuestion).find("input")[0].focus();
+      if (typeof $(this.idNextQuestion).find("input")[0] !== "undefined") {
+        $(this.idNextQuestion)
+          .find("input")[0]
+          .focus();
+      } else if (
+        typeof $(this.idNextQuestion).find("textarea")[0] !== "undefined"
+      ) {
+        $(this.idNextQuestion)
+          .find("textarea")[0]
+          .focus();
       }
     }
   },
@@ -186,7 +206,7 @@ export default {
   max-width: 700px
 
 .type
-  align-items: center
+  align-items: flex-start
   display: flex
   justify-content: center
   flex-direction: column
@@ -199,11 +219,15 @@ export default {
   height: 500px
   width: 50%
 
+.radiobtn label
+  font-size: 1.4em
 
 .question, .arrow
-  font-size: 1.5em
+  font-size 1.7em
   margin-bottom 20px
 
+.question label
+  font-weight 800
 
 input[type="date"], input[type="text"], input[type="email"], input[type="tel"], textarea
   background: transparent
@@ -212,7 +236,7 @@ input[type="date"], input[type="text"], input[type="email"], input[type="tel"], 
   padding-left: 5px
   font-family: 'Karla', Helevetica, Artial, sans-serif
   color: #2c3e50;
-  font-size: 1.2em
+  font-size: 1.4em
   outline: none;
   max-width: 500px
   width: 100%
@@ -223,14 +247,13 @@ input[type="date"], input[type="text"]
 textarea
   overflow-y auto
   border-left solid 1px gray
+  width auto
 
 .confirmation-reponses
   width: auto
   display: flex
   justify-content: center
   margin: auto
-
-
 
 // Auto-growing <textarea>
 .textarea-container
@@ -250,6 +273,8 @@ textarea {
   position: absolute;
   //resize:none;
   white-space: normal;
+  max-width auto
+  width auto
 }
 
 .textarea-size {
@@ -258,4 +283,36 @@ textarea {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+
+ul
+  list-style-type none
+
+.erreurs
+  color red
+  font-weight 800
+
+
+@media screen and (max-width: 599px)
+  .type
+    margin: auto
+
+  .question-type
+    width: 90%
+
+@media screen and (min-width: 600px) and (max-width: 767px)
+  .type
+    margin-left 100px
+
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+  .type
+    margin-left 100px
+
+@media screen and (min-width: 992px) and (max-width: 1199px)
+  h2
+    width 75%
+
+@media screen and (min-width: 1200px)
+  h2
+    width: 50%
 </style>
