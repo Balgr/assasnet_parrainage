@@ -43,8 +43,9 @@ export default {
 
 <style lang="stylus" scoped>
 a {
-    border: 4px solid #3F3F3F;
-    color: #3F3F3F;
+    border: 3px solid white;
+    border-radius 5px
+    color: white;
     display: inline-block;
     font-size: 18px;
     font-weight: bold;
@@ -69,7 +70,7 @@ a .label {
 }
 
 a .icon-arrow {
-    fill: #3F3F3F;
+    fill: white;
     height: 15px;
     top: 17px;
     transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
@@ -107,12 +108,12 @@ a:hover .icon-arrow.after {
 }
 
 a:active {
-    border-color: #FD6154;
-    color: #FD6154;
+    border-color: white;
+    color: white;
 }
 
 a:active .icon-arrow {
-    fill: #FD6154;
+    fill: white;
 }
 
 // Custom

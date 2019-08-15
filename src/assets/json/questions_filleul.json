@@ -112,15 +112,11 @@
       "reponses": [
         { 
             "id" : 1,
-            "reponse": "Equipe 1 (A à J)"
+            "reponse": "Equipe 1"
         },  
         { 
             "id" : 2,
-            "reponse": "Equipe 2 (K à T)"
-        },  
-        { 
-            "id" : 3,
-            "reponse": "Equipe 3 (U à Z)"
+            "reponse": "Equipe 2"
         }
       ]
     },

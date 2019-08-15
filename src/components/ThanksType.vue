@@ -88,5 +88,5 @@ a
   background: transparent
   border: none
   font-family: 'Avenir', Helevetica, Arial, sans-serif
-  color: #2c3e50;
+  color: white;
 </style>

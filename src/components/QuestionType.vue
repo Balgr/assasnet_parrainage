@@ -21,6 +21,7 @@
           class="input-choices"
           @change="scrollToNextQuestion()"
           v-on:keyup.enter="scrollToNextQuestion()"
+          v-on:keyup.tab="scrollToNextQuestion()"
           @input="updateAnswer"
         />
         <label
@@ -39,6 +40,7 @@
         class="input-date"
         :required="question.obligatoire"
         v-on:keyup.enter="scrollToNextQuestion()"
+        v-on:keyup.tab="scrollToNextQuestion()"
         @input="updateAnswer"
       />
     </div>
@@ -56,6 +58,7 @@
         class="input-string"
         placeholder="Entrez une réponse puis appuyez sur Entrée..."
         v-on:keyup.enter="scrollToNextQuestion()"
+        v-on:keyup.tab="scrollToNextQuestion()"
         :required="question.obligatoire"
         @input="updateAnswer"
       />
@@ -87,6 +90,7 @@
           class="input-string"
           :msg="reponse.text"
           v-on:keyup.enter="scrollToNextQuestion()"
+          v-on:keyup.tab="scrollToNextQuestion()"
           @click="updateAnswer"
         />
       </div>
@@ -130,9 +134,7 @@ export default {
     }
   },
   props: {
-    question: Object,
-    parrain: Boolean,
-    filleul: Boolean
+    question: Object
   },
   data() {
     return {};
@@ -140,19 +142,11 @@ export default {
   methods: {
     updateAnswer(e) {
       this.$props.question.reponseDonnee = e.target.value;
-      if (this.$props.parrain === true) {
-        this.$store.commit({
-          type: "updateAnswerParrain",
-          reponseDonnee: e.target.value,
-          id: this.$props.question.id
-        });
-      } else if (this.$props.filleul === true) {
-        this.$store.commit({
-          type: "updateAnswerFilleul",
-          reponseDonnee: e.target.value,
-          id: this.$props.question.id
-        });
-      }
+      this.$store.commit({
+        type: "updateAnswer",
+        reponseDonnee: e.target.value,
+        id: this.$props.question.id
+      });
     },
     scrollToNextQuestion: function() {
       window.location.href = this.idNextQuestion;
@@ -232,10 +226,10 @@ export default {
 input[type="date"], input[type="text"], input[type="email"], input[type="tel"], textarea
   background: transparent
   border: none
-  border-bottom: solid 1px gray
+  border-bottom: solid 1px white
   padding-left: 5px
   font-family: 'Karla', Helevetica, Artial, sans-serif
-  color: #2c3e50;
+  color: white;
   font-size: 1.4em
   outline: none;
   max-width: 500px
@@ -246,7 +240,7 @@ input[type="date"], input[type="text"]
 
 textarea
   overflow-y auto
-  border-left solid 1px gray
+  border-left solid 1px white
   width auto
 
 .confirmation-reponses

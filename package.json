@@ -1,6 +1,13 @@
 {
   "name": "parrainage",
   "version": "0.1.0",
+  "description": "Module front-end permettant aux étudiants de l'Université Paris-II de s'inscrire en tant que parrain ou filleul pour bénéficier du système de parrainage mis en place par l'association Assas.net.",
+  "author": {
+    "name": "Mehdi RAFENNE",
+    "email": "mehdi@farem.tech",
+    "url": "http://farem.tech"
+  },
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

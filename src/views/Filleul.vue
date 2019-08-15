@@ -3,19 +3,15 @@
     <vue-scroll-snap :fullscreen="true">
       <div class="content">
         <div class="welcome-container">
-          <WelcomeType :parrain="true" :filleul="false" />
+          <WelcomeType :filleul="true" :parrain="false" />
         </div>
         <div class="form-container">
           <div class="item item-logo">
             <img src="../assets/logo_assasnet.png" class="logo" />
           </div>
           <form action="" method="POST">
-            <div
-              class="item"
-              v-for="question in questions.questions"
-              :key="question.id"
-            >
-              <QuestionType v-bind:question="question"  :parrain="false" :filleul="true" />
+            <div class="item" v-for="question in questions" :key="question.id">
+              <QuestionType v-bind:question="question" />
             </div>
             <div class="item item-submit">
               <Button class="btn-submit" @click.native="submit" msg="Envoyer" />
@@ -53,11 +49,11 @@ import { HTTP } from "../http-common.js";
 export default {
   name: "filleul",
   computed: {
-    questions: () => store.state.questionsParrain
+    questions: () => store.state.questions
   },
   data() {
     return {
-      postBody: [],
+      postBody: '',
       erreurs: [],
       score: 50,
       coefficient: 1
@@ -69,27 +65,37 @@ export default {
       if (this.validerFormulaire() === true) {
         this.craftPostRequest();
 
-        HTTP.post("filleul", {
-          body: this.$data.postBody
-        });
+        //console.log(this.$data.postBody);
+
+        HTTP.post("filleuls", this.$data.postBody)
+          .then(response => {})
+          .catch(e => {
+            console.log(e);
+          });
+
         // Si on reçoit une réponse 201 de l'API, on affiche le message de remerciement.
         $(".gradientback").css("display", "none");
         $(".form-container").fadeOut();
         $(".thanks-container").fadeIn(500);
-      }
+
+        // Sinon, on affiche une erreur.
+      } else {
+
+}
+      // Si ça passe, on fadeOut le formulaire et on affiche le .thanks-container à la place
     },
     validerFormulaire() {
       // On efface toutes les erreurs précédentes
       this.$data.erreurs = [];
       this.$store.commit({
-        type: "resetErrorsForAllQuestionsFilleul"
+        type: "resetErrorsForAllQuestions"
       });
 
-      this.questions.questions.forEach(function(question) {
+      this.questions.forEach(function(question) {
         // On vérifie que la question a été répondue (si elle est obligatoire)
         if (question.obligatoire === true && question.reponseDonnee === "") {
           this.$store.commit({
-            type: "updateErrorsFilleul",
+            type: "updateErrors",
             erreur: "Cette question est obligatoire.",
             id: question.id
           });
@@ -105,7 +111,7 @@ export default {
           RegExp(question.pattern).test(question.reponseDonnee) !== true
         ) {
           this.$store.commit({
-            type: "updateErrorsFilleul",
+            type: "updateErrors",
             erreur: "Le format de la réponse est incorrect.",
             id: question.id
           });
@@ -122,7 +128,7 @@ export default {
               .length == 0
           ) {
             this.$store.commit({
-              type: "updateErrorsFilleul",
+              type: "updateErrors",
               erreur: "Veuillez sélectionner une réponse existante",
               id: question.id
             });
@@ -135,51 +141,62 @@ export default {
         }
       }, this);
 
-      if(this.$data.erreurs.length === 0) {
+      if (this.$data.erreurs.length === 0) {
         return true;
       }
       return false;
     },
     craftPostRequest: function() {
-      this.$data.postBody["nom"] = this.questions.questions.find(
+      let obj = {};
+      obj["nom"] = this.questions.find(
         el => el.id === "Efz8gtn6z9"
       ).reponseDonnee;
-      this.$data.postBody["prenom"] = this.questions.questions.find(
+      obj["prenom"] = this.questions.find(
         el => el.id === "P3Oigxjazq"
       ).reponseDonnee;
-      this.$data.postBody["email"] = this.questions.questions.find(
+      obj["email"] = this.questions.find(
         el => el.id === "5OKjkE49MS"
       ).reponseDonnee;
-      this.$data.postBody["nomFacebook"] = this.questions.questions.find(
+      obj["nomFacebook"] = this.questions.find(
         el => el.id === "jgskTRIlwL"
       ).reponseDonnee;
-      this.$data.postBody["telephone"] = this.questions.questions.find(
+      obj["telephone"] = this.questions.find(
         el => el.id === "D15UFZLwFq"
       ).reponseDonnee;
-      this.$data.postBody["discipline"] = this.questions.questions.find(
+      obj["discipline"] = this.questions.find(
         el => el.id === "uBo0agUKn6"
       ).reponseDonnee;
-      this.$data.postBody["anneeActuelle"] = this.questions.questions.find(
+      obj["anneeActuelle"] = this.questions.find(
         el => el.id === "kc1qjzOXfe"
       ).reponseDonnee;
-      this.$data.postBody["equipeL1"] = this.questions.questions.find(
+      obj["equipeL1"] = this.questions.find(
         el => el.id === "t0mP0MWg22"
       ).reponseDonnee;
-      this.$data.postBody["commentairesSpeciaux"] = this.questions.questions.find(
+      obj["commentairesSpeciaux"] = this.questions.find(
         el => el.id === "H8wpHwdeZk"
       ).reponseDonnee;
-      this.$data.postBody["dateInscription"] = new Date().toString();
+      
+      obj["reponses"] = [];
 
       // On calcule le score avec le coefficient, et on l'ajoute au tableau
-      this.questions.questions.forEach(function(q) {
-        if (typeof q.scoreObtenu !== 'undefined') {
+      this.questions.forEach(function(q) {
+        // On calcule le score et le coefficient
+        if (typeof q.scoreObtenu !== "undefined") {
           this.$data.score += q.scoreObtenu;
-        } else if (typeof q.coefficientObtenu !== 'undefined') {
+        } else if (typeof q.coefficientObtenu !== "undefined") {
           this.$data.coefficient = q.coefficientObtenu;
+        }
+
+        // On en profite pour récupérer la liste des réponses de l'utilisateur,
+        // qu'on envoie avec le JSON
+        if (q.type === "multiple") {
+          obj["reponses"].push(q.reponseDonnee);
         }
       }, this);
 
-      this.$data.postBody["score"] = this.$data.score * this.$data.coefficient;
+      obj["score"] = this.$data.score * this.$data.coefficient;
+
+      this.$data.postBody = JSON.stringify(obj);
     }
   },
   components: {
@@ -201,7 +218,7 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-  background-color: cyan
+  background-color: #042a5f
   line-height: 1.8em
 
 .content

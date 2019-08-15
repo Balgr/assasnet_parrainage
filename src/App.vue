@@ -15,7 +15,7 @@
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   text-align center
-  color #2c3e50
+  color white
   height: 100vh
   width: 100vw
 
@@ -23,7 +23,7 @@
   padding 30px
   a
     font-weight bold
-    color #2c3e50
+    color white
     &.router-link-exact-active
       color #42b983
 
@@ -33,4 +33,9 @@ body
 
 html
   scroll-behavior: smooth
+
+
+
+a
+  color white
 </style>
