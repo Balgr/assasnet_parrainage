@@ -104,7 +104,7 @@
     },
     {
       "id": "t0mP0MWg22",
-      "question": "En quelle équipe es-tu ?",
+      "question": "En quelle équipe es-tu cette année ?",
       "type": "multiple",
       "reponseDonnee": "",
       "obligatoire": true,

@@ -65,13 +65,9 @@ export default {
       if (this.validerFormulaire() === true) {
         this.craftPostRequest();
 
-        console.log(this.$data.postBody);
-
         HTTP.post("parrains", this.$data.postBody)
           .then(response => {})
-          .catch(e => {
-            console.log(e);
-          });
+          .catch(e => {});
 
         // TODO Si on reçoit une réponse 201 de l'API, on affiche le message de remerciement.
         $(".gradientback").css("display", "none");
@@ -175,7 +171,6 @@ export default {
       ).reponseDonnee;
       //obj["dateInscription"] = new Date().toString();
       obj["dateInscription"] = "2019-08-06T13:02:47+02:00";
-      
       obj["reponses"] = [];
 
       // On calcule le score avec le coefficient, et on l'ajoute au tableau
@@ -199,9 +194,7 @@ export default {
       this.$data.postBody = JSON.stringify(obj);
     }
   },
-  created() {
-    console.log(this.questions);
-  },
+  created() {},
   components: {
     VueScrollSnap,
     QuestionType,
