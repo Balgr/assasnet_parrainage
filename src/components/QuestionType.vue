@@ -1,5 +1,5 @@
 <template>
-  <div class="type anchor-offset question-type" :id="idHtml">
+  <div class="item type anchor-offset question-type" :id="idHtml">
     <div :class="'question question-' + question.id">
       <label :for="question.id" v-html="question.question"></label>
       <br />

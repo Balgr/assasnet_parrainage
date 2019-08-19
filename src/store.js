@@ -17,6 +17,7 @@ export default new Vuex.Store({
         return element.id === payload.id;
       });
       question.reponseDonnee = payload.reponseDonnee;*/
+
       state.questions.forEach(el => {
         if (el.id === payload.id) {
           el.reponseDonnee = payload.reponseDonnee;
@@ -33,6 +34,20 @@ export default new Vuex.Store({
               }).coefficient;
             }
           }
+        }
+
+        if (typeof el.conditions !== "undefined") {
+          el.conditions.forEach(element => {
+            if (
+              state.questions.find(function(q) {
+                return q.id === element.answerToQuestionId;
+              }).reponseDonnee === element.reponseDonnee
+            ) {
+              el.conditionRemplie = true;
+            } else {
+              el.conditionRemplie = false;
+            }
+          });
         }
       });
     },
