@@ -18,11 +18,12 @@ export default {
   data() {
     return {};
   },
-  components: {}
+  components: { }
 };
 </script>
 
 <style scoped lang="stylus">
 h2
   font-size 2em
+
 </style>

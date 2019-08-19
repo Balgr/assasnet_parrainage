@@ -222,7 +222,7 @@
     },
     {
       "id": "t0mP0MWg22",
-      "question": "En quelle équipe es-tu cette année ?",
+      "question": "En quelle équipe es-tu ?",
       "type": "multiple",
       "reponseDonnee": "",
       "obligatoire": true,

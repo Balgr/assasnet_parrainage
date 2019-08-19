@@ -65,10 +65,13 @@ export default {
       if (this.validerFormulaire() === true) {
         this.craftPostRequest();
 
+        //console.log(this.$data.postBody);
 
         HTTP.post("filleuls", this.$data.postBody)
           .then(response => {})
-          .catch(e => {});
+          .catch(e => {
+            console.log(e);
+          });
 
         // Si on reçoit une réponse 201 de l'API, on affiche le message de remerciement.
         $(".gradientback").css("display", "none");
