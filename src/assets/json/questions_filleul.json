@@ -151,6 +151,11 @@
           "type": "if",
           "answerToQuestionId": "kc1qjzOXfe",
           "isEqualTo": "Master 1"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 2"
         }
       ] 
     },
@@ -189,11 +194,16 @@
           "type": "if",
           "answerToQuestionId": "kc1qjzOXfe",
           "isEqualTo": "Master 1"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 2"
         }
       ] 
     },
     {
-      "id": "fV3kXIdn0c",
+      "id": "N9AiOZ5BuI",
       "question": "Et ta L3, public ou privé ?",
       "type": "multiple",
       "reponseDonnee": "",
@@ -221,7 +231,7 @@
       ] 
     },
     {
-      "id": "t0mP0MWg22",
+      "id": "bjQ9feAUk8",
       "question": "En quelle équipe es-tu ?",
       "type": "multiple",
       "reponseDonnee": "",
@@ -235,7 +245,72 @@
         },  
         { 
             "id" : 2,
-            "reponse": "Equipe 2"
+            "reponse": "Equipe 2",
+            "value": "Equipe 2"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 1"
+        }
+      ]
+    },
+    {
+      "id": "QUYbdmORrh",
+      "question": "En quelle équipe es-tu ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Equipe 1",
+            "value": "Equipe 1"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Equipe 2",
+            "value": "Equipe 2"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 2"
+        }
+      ]
+    },
+    {
+      "id": "xiR5jbH2wy",
+      "question": "En quelle équipe es-tu ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Privé",
+            "value": "Privé"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Public",
+            "value": "Public"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 3"
         }
       ]
     },

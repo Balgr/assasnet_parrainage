@@ -1,316 +1,500 @@
 {
-    "questions": [
-      {
-        "id": "P3Oigxjazq",
-        "question": "On commence doucement... Ton prénom ?",
-        "type": "string",
-        "pattern": "",
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": ""
-      },
-      {
-        "id": "Efz8gtn6z9",
-        "question": "Jusqu'ici tout va bien. Ton nom de famille ?",
-        "type": "string",
-        "pattern": "",
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": ""
-      },
-      {
-        "id": "5OKjkE49MS",
-        "question": "Une adresse email ?",
-        "type": "string",
-        "pattern": "",
-        "reponseDonnee": "",
-        "format": "email",
-        "obligatoire": true,
-        "erreurs": ""
-      },
-      {
-        "id": "jgskTRIlwL",
-        "question": "Pour te contacter plus facilement, indique nous ton nom Facebook (si tu n'utilises pas Facebook, indique-le) !",
-        "type": "string",
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": ""
-      },
-      {
-        "id": "D15UFZLwFq",
-        "question": "Au passage, on n'oublie pas d'aller liker <a href=\"https://facebook.com/OfficielAssasNet\">la page officielle d'Assas.net</a> ! Un numéro de téléphone ?",
-        "type": "string",
-        "pattern": "",
-        "format": "tel",
-        "obligatoire": true,
-        "reponseDonnee": "",
-        "erreurs": ""
-      },
-      {
-        "id": "uBo0agUKn6",
-        "question": "Tu étudies...",
-        "type": "multiple",
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Le droit (so mainstream)",
-              "value": "Droit"
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Économie-Gestion / AES (c'est sous-côté)",
-              "value": "Eco-G"
-          },
-          { 
-              "id" : 3,
-              "reponse": "L'info-com (il en faut, hein...)",
-              "value": "Info-Com"
-          },
-          {
-              "id": 4,
-              "reponse": "Le management (oui, il y a du management à Assas)",
-              "value": "Management"
-          }
-        ]
-      },
-      {
-        "id": "kc1qjzOXfe",
-        "question": "Et en quelle année ?",
-        "type": "multiple",
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Licence 1",
-              "value": "Licence 1"
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Licence 2",
-              "value": "Licence 2"
-          },  
-          { 
-              "id" : 3,
-              "reponse": "Licence 3",
-              "value": "Licence 3"
-          },  
-          { 
-              "id" : 4,
-              "reponse": "Master 1",
-              "value": "Master 1"
-          },  
-          { 
-              "id" : 5,
-              "reponse": "Master 2",
-              "value": "Master 2"
-          }
-        ]
-      },
-      {
-        "id": "t0mP0MWg22",
-        "question": "En quelle équipe es-tu cette année ?",
-        "type": "multiple",
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Equipe 1",
-              "value": "Equipe 1"
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Equipe 2"
-          }
-        ]
-      },
-      {
-        "id": "YsCMF8Q0el",
-        "question": "Tu te définirais plutôt comme quelqu'un de...",
-        "type": "multiple",
-        "resultat": "coefficient",
-        "reponseDonnee": "",
-        "coefficientObtenu": 0,
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Sérieux",
-              "value": "Sérieux",
-              "coefficient": 0.9
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Extraverti",
-              "value": "Extraverti",
-              "coefficient": 1.1
-          }
-        ]
-      },
-      {
-        "id": "LAcVKNDEHb",
-        "question": "Pour te détendre, c'est plutôt...",
-        "type": "multiple",
-        "resultat": "score",
-        "reponseDonnee": "",
-        "scoreObtenu": 0,
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Jeux-vidéos (de Street Fighter à Animal Crossing)",
-              "value": "Jeux-vidéos",
-              "score": 0
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Arts et théâtre (parce qu'être culturé, c'est important)",
-              "value": "Arts et théâtre",
-              "score": 10
-          },  
-          { 
-              "id" : 3,
-              "reponse": "Sport (manger n'est pas un sport)",
-              "value": "Sport",
-              "score": 5
-          }
-        ]
-      },
-      {
-        "id": "XzsSGoj42c",
-        "question": "Une bonne soirée, en général, c'est...",
-        "type": "multiple",
-        "reponseDonnee": "",
-        "resultat": "score",
-        "scoreObtenu": 0,
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "En boîte (ambiance-toi sur Djadja, promis, personne ne juge)",
-              "value": "En boîte",
-              "score": 10
-          },  
-          { 
-              "id" : 2,
-              "reponse": "En appartement (posey sur le canapey avec la team)",
-              "value": "En appartement",
-              "score": 5
-          },  
-          { 
-              "id" : 3,
-              "reponse": "Verre en terrasse (un verre, mais pas 15... bon, ok, allez, deux verres, mais pas...)",
-              "value": "Verre en terrasse",
-              "score": 5
-          }
-        ]
-      },
-      {
-        "id": "QpQcbfBSsU",
-        "question": "Pour se tenir au courant de l'actualité, rien de tel que...",
-        "type": "multiple",
-        "resultat": "score",
-        "scoreObtenu": 0,
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Le Monde (classique)",
-              "value": "Le Monde",
-              "score": -5
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Les Echos (team chemise blanche - mocassins)",
-              "value": "Les Echos",
-              "score": -10
-          },  
-          { 
-              "id" : 3,
-              "reponse": "Closer (faut de tout pour faire un monde, hein)",
-              "value": "Closer",
-              "score": 10
-          }
-        ]
-      },
-      {
-        "id": "qNpGPAvAFI",
-        "question": "Et à la télé ?",
-        "type": "multiple",
-        "resultat": "score",
-        "reponseDonnee": "",
-        "scoreObtenu": 0,
-        "erreurs": "",
-        "obligatoire": true,
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "TPMP (eh oui mes p'tites beautés)",
-              "value": "TPMP",
-              "score": 5
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Arte (t'façon, c'est clairement la meilleure chaîne, hein ? HEIN ?)",
-              "value": "Arte",
-              "score": -5
-          },  
-          { 
-              "id" : 3,
-              "reponse": "Télé ? Jamais entendu parler !",
-              "value": "Pas de TV",
-              "score": 10
-          }
-        ]
-      },
-      {
-        "id": "pUCefWxPDR",
-        "question": "Ton attitude en TD ?",
-        "type": "multiple",
-        "resultat": "score",
-        "scoreObtenu": 0,
-        "reponseDonnee": "",
-        "obligatoire": true,
-        "erreurs": "",
-        "reponses": [
-          { 
-              "id" : 1,
-              "reponse": "Toujours au 1er rang (j'ai pas trouvé de blague, déso)",
-              "value": "Toujours au 1er rang",
-              "score": -10
-          },  
-          { 
-              "id" : 2,
-              "reponse": "Peu importe, tant que le chargé m'interroge pas",
-              "value": "Peu importe",
-              "score": 0
-          },  
-          { 
-              "id" : 3,
-              "reponse": "Hein ?? Y'avait TD !?",
-              "value": "Absent",
-              "score": 10
-          }
-        ]
-      },
-      {
-        "id": "H8wpHwdeZk",
-        "question": "C'est dans la boîte ! Y'a-t-il quelque chose de particulier dont tu souhaiterais nous faire part, qui nous aiderait à t'attribuer le parrain/la marraine idéal(e) ? Si tu es étudiant étranger, en situation de handicap, ou autre, indique-le ici !",
-        "type": "text",
-        "erreurs": "",
-        "obligatoire": false,
-        "reponseDonnee": ""
-      }
-    ]
-  }
+  "questions": [
+    {
+      "id": "P3Oigxjazq",
+      "question": "On commence doucement... Ton prénom ?",
+      "type": "string",
+      "pattern": "",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": ""
+    },
+    {
+      "id": "Efz8gtn6z9",
+      "question": "Jusqu'ici tout va bien. Ton nom de famille ?",
+      "type": "string",
+      "pattern": "",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": ""
+    },
+    {
+      "id": "5OKjkE49MS",
+      "question": "Une adresse email ?",
+      "type": "string",
+      "pattern": "",
+      "reponseDonnee": "",
+      "format": "email",
+      "obligatoire": true,
+      "erreurs": ""
+    },
+    {
+      "id": "jgskTRIlwL",
+      "question": "Pour te contacter plus facilement, indique nous ton nom Facebook (si tu n'utilises pas Facebook, indique-le) !",
+      "type": "string",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": ""
+    },
+    {
+      "id": "D15UFZLwFq",
+      "question": "Au passage, on n'oublie pas d'aller liker <a href=\"https://facebook.com/OfficielAssasNet\">la page officielle d'Assas.net</a> ! Un numéro de téléphone ?",
+      "type": "string",
+      "pattern": "",
+      "format": "tel",
+      "obligatoire": true,
+      "reponseDonnee": "",
+      "erreurs": ""
+    },
+    {
+      "id": "uBo0agUKn6",
+      "question": "Tu étudies...",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Le droit (so mainstream)",
+            "value": "Droit"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Économie-Gestion / AES (c'est sous-côté)",
+            "value": "Eco-G"
+        },
+        { 
+            "id" : 3,
+            "reponse": "L'info-com (il en faut, hein...)",
+            "value": "Info-Com"
+        },
+        {
+            "id": 4,
+            "reponse": "Le management (oui, il y a du management à Assas)",
+            "value": "Management"
+        }
+      ]
+    },
+    {
+      "id": "kc1qjzOXfe",
+      "question": "Et en quelle année ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Licence 1",
+            "value": "Licence 1"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Licence 2",
+            "value": "Licence 2"
+        },  
+        { 
+            "id" : 3,
+            "reponse": "Licence 3",
+            "value": "Licence 3"
+        },  
+        { 
+            "id" : 4,
+            "reponse": "Master 1",
+            "value": "Master 1"
+        },  
+        { 
+            "id" : 5,
+            "reponse": "Master 2",
+            "value": "Master 2"
+        }
+      ]
+    },
+    {
+      "id": "a5y74UnxtV",
+      "question": "En quelle équipe étais-tu en L1 ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Equipe 1",
+            "value": "Equipe 1"
+        },
+        { 
+            "id" : 2,
+            "reponse": "Equipe 2",
+            "value": "Equipe 2"
+        },
+        { 
+            "id" : 3,
+            "reponse": "Equipe 3",
+            "value": "Equipe 3"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 2"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 3"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 1"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 2"
+        }
+      ] 
+    },
+    {
+      "id": "WQG0VSFJaR",
+      "question": "En quelle équipe étais-tu en L2 ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Equipe 1",
+            "value": "Equipe 1"
+        },
+        { 
+            "id" : 2,
+            "reponse": "Equipe 2",
+            "value": "Equipe 2"
+        },
+        { 
+            "id" : 3,
+            "reponse": "Equipe 3",
+            "value": "Equipe 3"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 3"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 1"
+        },
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 2"
+        }
+      ] 
+    },
+    {
+      "id": "N9AiOZ5BuI",
+      "question": "Et ta L3, public ou privé ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Public",
+            "value": "Public"
+        },
+        { 
+            "id" : 2,
+            "reponse": "Privé",
+            "value": "Privé"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Master 1"
+        }
+      ] 
+    },
+    {
+      "id": "bjQ9feAUk8",
+      "question": "En quelle équipe es-tu ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Equipe 1",
+            "value": "Equipe 1"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Equipe 2",
+            "value": "Equipe 2"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 1"
+        }
+      ]
+    },
+    {
+      "id": "QUYbdmORrh",
+      "question": "En quelle équipe es-tu ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Equipe 1",
+            "value": "Equipe 1"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Equipe 2",
+            "value": "Equipe 2"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 2"
+        }
+      ]
+    },
+    {
+      "id": "xiR5jbH2wy",
+      "question": "En quelle équipe es-tu ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Privé",
+            "value": "Privé"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Public",
+            "value": "Public"
+        }
+      ],
+      "conditionRemplie": false,
+      "conditions": [
+        {
+          "type": "if",
+          "answerToQuestionId": "kc1qjzOXfe",
+          "isEqualTo": "Licence 3"
+        }
+      ]
+    },
+    {
+      "id": "YsCMF8Q0el",
+      "question": "Tu te définirais plutôt comme quelqu'un de...",
+      "type": "multiple",
+      "resultat": "coefficient",
+      "reponseDonnee": "",
+      "coefficientObtenu": 0,
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Sérieux",
+            "value": "Sérieux",
+            "coefficient": 0.9
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Extraverti",
+            "value": "Extraverti",
+            "coefficient": 1.1
+        }
+      ]
+    },
+    {
+      "id": "LAcVKNDEHb",
+      "question": "Pour te détendre, c'est plutôt...",
+      "type": "multiple",
+      "resultat": "score",
+      "reponseDonnee": "",
+      "scoreObtenu": 0,
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Jeux-vidéos (de Street Fighter à Animal Crossing)",
+            "value": "Jeux-vidéos",
+            "score": 0
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Arts et théâtre (parce qu'être culturé, c'est important)",
+            "value": "Arts et théâtre",
+            "score": 10
+        },  
+        { 
+            "id" : 3,
+            "reponse": "Sport (manger n'est pas un sport)",
+            "value": "Sport",
+            "score": 5
+        }
+      ]
+    },
+    {
+      "id": "XzsSGoj42c",
+      "question": "Une bonne soirée, en général, c'est...",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "resultat": "score",
+      "scoreObtenu": 0,
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "En boîte (ambiance-toi sur Djadja, promis, personne ne juge)",
+            "value": "En boîte",
+            "score": 10
+        },  
+        { 
+            "id" : 2,
+            "reponse": "En appartement (posey sur le canapey avec la team)",
+            "value": "En appartement",
+            "score": 5
+        },  
+        { 
+            "id" : 3,
+            "reponse": "Verre en terrasse (un verre, mais pas 15... bon, ok, allez, deux verres, mais pas...)",
+            "value": "Verre en terrasse",
+            "score": 5
+        }
+      ]
+    },
+    {
+      "id": "QpQcbfBSsU",
+      "question": "Pour se tenir au courant de l'actualité, rien de tel que...",
+      "type": "multiple",
+      "resultat": "score",
+      "scoreObtenu": 0,
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Le Monde (classique)",
+            "value": "Le Monde",
+            "score": -5
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Les Echos (team chemise blanche - mocassins)",
+            "value": "Les Echos",
+            "score": -10
+        },  
+        { 
+            "id" : 3,
+            "reponse": "Closer (faut de tout pour faire un monde, hein)",
+            "value": "Closer",
+            "score": 10
+        }
+      ]
+    },
+    {
+      "id": "qNpGPAvAFI",
+      "question": "Et à la télé ?",
+      "type": "multiple",
+      "resultat": "score",
+      "reponseDonnee": "",
+      "scoreObtenu": 0,
+      "erreurs": "",
+      "obligatoire": true,
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "TPMP (eh oui mes p'tites beautés)",
+            "value": "TPMP",
+            "score": 5
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Arte (t'façon, c'est clairement la meilleure chaîne, hein ? HEIN ?)",
+            "value": "Arte",
+            "score": -5
+        },  
+        { 
+            "id" : 3,
+            "reponse": "Télé ? Jamais entendu parler !",
+            "value": "Pas de TV",
+            "score": 10
+        }
+      ]
+    },
+    {
+      "id": "pUCefWxPDR",
+      "question": "Ton attitude en TD ?",
+      "type": "multiple",
+      "resultat": "score",
+      "scoreObtenu": 0,
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Toujours au 1er rang (j'ai pas trouvé de blague, déso)",
+            "value": "Toujours au 1er rang",
+            "score": -10
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Peu importe, tant que le chargé m'interroge pas",
+            "value": "Peu importe",
+            "score": 0
+        },  
+        { 
+            "id" : 3,
+            "reponse": "Hein ?? Y'avait TD !?",
+            "value": "Absent",
+            "score": 10
+        }
+      ]
+    },
+    {
+      "id": "H8wpHwdeZk",
+      "question": "C'est dans la boîte ! Y'a-t-il quelque chose de particulier dont tu souhaiterais nous faire part, qui nous aiderait à t'attribuer le/la filleul(e) idéal(e) ? Si tu es étudiant étranger, en situation de handicap, ou autre, indique-le ici !",
+      "type": "text",
+      "erreurs": "",
+      "obligatoire": false,
+      "reponseDonnee": ""
+    }
+  ]
+}

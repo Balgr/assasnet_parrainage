@@ -127,7 +127,7 @@ export default {
     },
     idNextQuestion: function() {
       var elem = $("#" + this.idHtml)
-        .closest(".item")
+        .closest(".question-container")
         .next()
         .find(".type");
       return "#" + elem.attr("id");
@@ -165,6 +165,9 @@ export default {
   },
   components: {
     Button
+  },
+  created: function(){
+    //("Loaded question");
   }
 };
 

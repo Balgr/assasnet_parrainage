@@ -32,7 +32,7 @@ body
   padding: 0
 
 html
-  scroll-behavior: smooth
+  //scroll-behavior: smooth
 
 
 

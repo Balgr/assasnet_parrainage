@@ -9,45 +9,40 @@ export default new Vuex.Store({
     questions: Array
   },
   mutations: {
-    /*loadData(state, payload) {
-      state.questions = require("./assets/json/questions_" + payload.form + ".json");
-    },*/
     updateAnswer(state, payload) {
-      /*var question = state.questions.find(function(element) {
-        return element.id === payload.id;
-      });
-      question.reponseDonnee = payload.reponseDonnee;*/
-
-      state.questions.forEach(el => {
-        if (el.id === payload.id) {
-          el.reponseDonnee = payload.reponseDonnee;
-          if (el.type === "multiple") {
-            if (typeof el.scoreObtenu !== "undefined") {
-              el.scoreObtenu = el.reponses.find(function(reponse) {
-                return reponse.reponse === el.reponseDonnee;
+      state.questions.forEach(questionDansBoucle => {
+        if (questionDansBoucle.id === payload.id) {
+          questionDansBoucle.reponseDonnee = payload.reponseDonnee;
+          if (questionDansBoucle.type === "multiple") {
+            if (typeof questionDansBoucle.scoreObtenu !== "undefined") {
+              questionDansBoucle.scoreObtenu = questionDansBoucle.reponses.find(function(reponse) {
+                return reponse.reponse === questionDansBoucle.reponseDonnee;
               }).score;
             }
-            //} else if (el.coefficientObtenu !== 'undefined') {
-            if (typeof el.coefficientObtenu !== "undefined") {
-              el.coefficientObtenu = el.reponses.find(function(reponse) {
-                return reponse.reponse === el.reponseDonnee;
+            if (typeof questionDansBoucle.coefficientObtenu !== "undefined") {
+              questionDansBoucle.coefficientObtenu = questionDansBoucle.reponses.find(function(reponse) {
+                return reponse.reponse === questionDansBoucle.reponseDonnee;
               }).coefficient;
             }
           }
         }
 
-        if (typeof el.conditions !== "undefined") {
-          el.conditions.forEach(element => {
-            if (
-              state.questions.find(function(q) {
-                return q.id === element.answerToQuestionId;
-              }).reponseDonnee === element.reponseDonnee
-            ) {
-              el.conditionRemplie = true;
+        if (typeof questionDansBoucle.conditions !== "undefined") {
+          for(let condition of questionDansBoucle.conditions) {
+            let questionToMonitor = state.questions.find(function(el) {
+              return condition.answerToQuestionId === el.id;
+            });
+
+            if(typeof questionToMonitor !== 'undefined' && questionToMonitor.reponseDonnee === condition.isEqualTo) {
+              questionDansBoucle.conditionRemplie = true;
+              questionDansBoucle.obligatoire = true;
+              break;
             } else {
-              el.conditionRemplie = false;
+              questionDansBoucle.conditionRemplie = false;
+              questionDansBoucle.obligatoire = false;
             }
-          });
+            //break;
+          }
         }
       });
     },
@@ -60,6 +55,10 @@ export default new Vuex.Store({
       state.questions.forEach((el, id) => {
         el.erreurs = [];
       });
+    },
+    chargerQuestions(state, payload) {
+      let q = require("./assets/json/questions_" + payload.formType + ".json");
+      state.questions = q.questions;
     }
   },
   actions: {}

@@ -21,8 +21,8 @@ new Vue({
   router,
   store,
   created: function() {
-    store.state.questions = require("./assets/json/questions_filleul.json");
-    store.state.questions = require("./assets/json/questions_parrain.json");
+    //store.state.questions = require("./assets/json/questions_filleul.json");
+    //store.state.questions = require("./assets/json/questions_parrain.json");
   },
   render: h => h(App)
 }).$mount("#app");

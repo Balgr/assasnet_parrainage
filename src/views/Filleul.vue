@@ -1,16 +1,21 @@
 <template>
-  <div class="home">
+  <div class="filleul">
     <vue-scroll-snap :fullscreen="true">
       <div class="content">
-        <div class="welcome-container">
-          <WelcomeType :filleul="true" :parrain="false" />
-        </div>
         <div class="form-container">
           <div class="item item-logo">
             <img src="../assets/logo_assasnet.png" class="logo" />
           </div>
           <form action="" method="POST">
-            <div class="item" v-for="question in questions" :key="question.id">
+            <div
+              class="question-container"
+              v-for="question in questions"
+              :key="question.id"
+              v-if="
+                typeof question.conditionRemplie === 'undefined' ||
+                  question.conditionRemplie
+              "
+            >
               <QuestionType v-bind:question="question" />
             </div>
             <div class="item item-submit">
@@ -28,9 +33,6 @@
         </div>
       </div>
     </vue-scroll-snap>
-    <!--<QuestionType v-for="(question, key) in questions" :key="key" v-bind:question="question" />
-    <QuestionType v-bind:question="questions[0]" />
-    <WelcomeType />-->
     <div class="gradientback"></div>
   </div>
 </template>
@@ -39,12 +41,11 @@
 // @ is an alias to /src
 import VueScrollSnap from "vue-scroll-snap";
 import QuestionType from "@/components/QuestionType.vue";
-import WelcomeType from "@/components/WelcomeType.vue";
 import ThanksType from "@/components/ThanksType.vue";
 import Button from "@/components/elements/Button.vue";
 
 import store from "../store.js";
-import { HTTP } from "../http-common.js";
+import HTTP from "../http-common.js";
 
 export default {
   name: "filleul",
@@ -53,7 +54,7 @@ export default {
   },
   data() {
     return {
-      postBody: '',
+      postBody: "",
       erreurs: [],
       score: 50,
       coefficient: 1
@@ -68,9 +69,21 @@ export default {
         //console.log(this.$data.postBody);
 
         HTTP.post("filleuls", this.$data.postBody)
-          .then(response => {})
+          .then(response => {
+            this.$emit('formulaire-envoye');
+          })
           .catch(e => {
-            console.log(e);
+            if (e.response) {
+              this.$data.erreurs.push(
+                "Une erreur s'est produite lors de l'envoi des données au serveur. Veuillez contacter le webmaster (webmaster@assas.net).<br>Erreur " +
+                  e.response.status
+              );
+            } else {
+              this.$data.erreurs.push(
+                "Une erreur inconnue s'est produite. Veuillez contacter le webmaster (webmaster@assas.net).<br>" +
+                  e.message
+              );
+            }
           });
 
         // Si on reçoit une réponse 201 de l'API, on affiche le message de remerciement.
@@ -80,8 +93,7 @@ export default {
 
         // Sinon, on affiche une erreur.
       } else {
-
-}
+      }
       // Si ça passe, on fadeOut le formulaire et on affiche le .thanks-container à la place
     },
     validerFormulaire() {
@@ -169,13 +181,57 @@ export default {
       obj["anneeActuelle"] = this.questions.find(
         el => el.id === "kc1qjzOXfe"
       ).reponseDonnee;
-      obj["equipeL1"] = this.questions.find(
-        el => el.id === "t0mP0MWg22"
-      ).reponseDonnee;
+
+      // Si l'étudiant est en L1
+      if (obj["anneeActuelle"] === "Licence 1") {
+        obj["equipeL1"] = this.questions.find(
+          el => el.id === "bjQ9feAUk8"
+        ).reponseDonnee;
+        obj["equipeL2"] = "";
+        obj["equipeL3"] = "";
+      }
+
+      // SI l'étudiant est en L2
+      else if (obj["anneeActuelle"] === "Licence 2") {
+        obj["equipeL1"] = this.questions.find(
+          el => el.id === "a5y74UnxtV"
+        ).reponseDonnee;
+        obj["equipeL2"] = this.questions.find(
+          el => el.id === "QUYbdmORrh"
+        ).reponseDonnee;
+        obj["equipeL3"] = "";
+      }
+
+      // Si l'étudiant est en L3
+      else if (obj["anneeActuelle"] === "Licence 3") {
+        obj["equipeL1"] = this.questions.find(
+          el => el.id === "a5y74UnxtV"
+        ).reponseDonnee;
+        obj["equipeL2"] = this.questions.find(
+          el => el.id === "WQG0VSFJaR"
+        ).reponseDonnee;
+        obj["equipeL3"] = this.questions.find(
+          el => el.id === "xiR5jbH2wy"
+        ).reponseDonnee;
+      }
+
+      // Si l'étudiant est en M1
+      else {
+        obj["equipeL1"] = this.questions.find(
+          el => el.id === "a5y74UnxtV"
+        ).reponseDonnee;
+        obj["equipeL2"] = this.questions.find(
+          el => el.id === "WQG0VSFJaR"
+        ).reponseDonnee;
+        obj["equipeL3"] = this.questions.find(
+          el => el.id === "N9AiOZ5BuI"
+        ).reponseDonnee;
+      }
+
       obj["commentairesSpeciaux"] = this.questions.find(
         el => el.id === "H8wpHwdeZk"
       ).reponseDonnee;
-      
+
       obj["reponses"] = [];
 
       // On calcule le score avec le coefficient, et on l'ajoute au tableau
@@ -194,7 +250,7 @@ export default {
         }
       }, this);
 
-      obj["score"] = this.$data.score * this.$data.coefficient;
+      obj["score"] = Math.round(this.$data.score * this.$data.coefficient);
 
       this.$data.postBody = JSON.stringify(obj);
     }
@@ -202,15 +258,17 @@ export default {
   components: {
     VueScrollSnap,
     QuestionType,
-    WelcomeType,
     ThanksType,
     Button
+  },
+  created: function() {
+    //console.log("Loaded filleul");
   }
 };
 </script>
 
 <style lang="stylus">
-@import url("https://fonts.googleapis.com/css?family=Karla&display=swap");
+ @import url("https://fonts.googleapis.com/css?family=Karla&display=swap");
 
 .home
   height: 100vh
@@ -256,14 +314,9 @@ export default {
   background: -ms-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
   background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
   pointer-events: none;
-  display none // Ne s'affiche pas avec le WelcomeType ni le ThanksType
 
 .item-submit
   height: 300px
-
-.form-container
-  display none
-  margin-bottom 200px
 
 .thanks-container
   display none

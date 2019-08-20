@@ -116,7 +116,4 @@ a:active .icon-arrow {
     fill: white;
 }
 
-// Custom
-.button
-  width: auto
 </style>
