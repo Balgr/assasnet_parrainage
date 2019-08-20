@@ -247,6 +247,11 @@
             "id" : 2,
             "reponse": "Equipe 2",
             "value": "Equipe 2"
+        },
+        { 
+            "id" : 3,
+            "reponse": "Equipe 3",
+            "value": "Equipe 3"
         }
       ],
       "conditionRemplie": false,
