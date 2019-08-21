@@ -18,14 +18,7 @@
   color white
   height: 100vh
   width: 100vw
-
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color white
-    &.router-link-exact-active
-      color #42b983
+  background-color: #042a5f
 
 body
   margin: 0
@@ -33,8 +26,6 @@ body
 
 html
   //scroll-behavior: smooth
-
-
 
 a
   color white

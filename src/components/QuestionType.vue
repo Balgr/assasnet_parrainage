@@ -16,7 +16,7 @@
           type="radio"
           :required="question.obligatoire"
           :name="question.id"
-          :value="reponse.reponse"
+          :value="reponse.value"
           :id="'rps-' + question.id + '-' + reponse.id"
           class="input-choices"
           @change="scrollToNextQuestion()"

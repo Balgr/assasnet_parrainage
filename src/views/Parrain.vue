@@ -244,6 +244,10 @@ export default {
 
       obj["score"] = Math.round(this.$data.score * this.$data.coefficient);
 
+      obj["nbFilleulsVoulus"] = parseInt(
+        this.questions.find(el => el.id === "NWWHV8HAEJ").reponseDonnee
+      );
+
       this.$data.postBody = JSON.stringify(obj);
     }
   },

@@ -270,14 +270,6 @@ export default {
 <style lang="stylus">
  @import url("https://fonts.googleapis.com/css?family=Karla&display=swap");
 
-.home
-  height: 100vh
-  width: 100vw
-  display: flex
-  justify-content: center
-  align-items: center
-  background-color: #042a5f
-  line-height: 1.8em
 
 .content
   display: flex

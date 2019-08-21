@@ -320,6 +320,31 @@
       ]
     },
     {
+      "id": "NWWHV8HAEJ",
+      "question": "Jusqu'à combien de filleul(e)s souhaiterais-tu ?",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "1",
+            "value": "1"
+        },
+        { 
+            "id" : 2,
+            "reponse": "2",
+            "value": "2"
+        },
+        { 
+            "id" : 3,
+            "reponse": "3",
+            "value": "3"
+        }
+      ]
+    },
+    {
       "id": "YsCMF8Q0el",
       "question": "Tu te définirais plutôt comme quelqu'un de...",
       "type": "multiple",
@@ -455,7 +480,7 @@
             "value": "Arte",
             "score": -5
         },  
-        { 
+        {
             "id" : 3,
             "reponse": "Télé ? Jamais entendu parler !",
             "value": "Pas de TV",

@@ -67,25 +67,10 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Karla&display=swap");
 .home
   height: 100%
-  display: flex
   justify-content: center
   align-items: center
   background-color: #042a5f
   line-height: 1.8em
-
-.content
-  display: flex
-  justify-content: flex-start
-  flex-direction: column
-  padding: 0;
-  margin: 0;
-  justify-content: center;
-
-.welcome-description p
-  margin-top: 10px
-
-
-.home
   border: none
   font-family: 'Karla', Helevetica, Arial, sans-serif
   color: white;
@@ -98,8 +83,6 @@ export default {
   width: 80%
   margin: auto
   font-size: 1.2em;
-
-.
 
 .btn
   position: fixed;
@@ -147,9 +130,4 @@ export default {
   h2
     width: 50%
 
-/**
- *****************************
- * FILLEUL et PARRAIN Styles *
- *****************************
- */
 </style>
