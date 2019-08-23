@@ -142,6 +142,32 @@ export default {
   methods: {
     updateAnswer(e) {
       this.$props.question.reponseDonnee = e.target.value;
+      if(this.$props.question.resultat !== "undefined") {
+        if(this.$props.question.resultat === "score") {
+          let score = this.$props.question.reponses.find(function(r) {
+            return r.value === e.target.value;
+          }).score;
+
+          this.$store.commit({
+            type: "updateAnswer",
+            reponseDonnee: e.target.value,
+            score: score,
+            id: this.$props.question.id
+          });
+        } else if (this.$props.question.resultat === "coefficient") {
+          let coefficient = this.$props.question.reponses.find(function(r) {
+            return r.value === e.target.value;
+          }).coefficient;
+
+          this.$store.commit({
+            type: "updateAnswer",
+            reponseDonnee: e.target.value,
+            coefficient: coefficient,
+            id: this.$props.question.id
+          });
+        }
+      }
+      
       this.$store.commit({
         type: "updateAnswer",
         reponseDonnee: e.target.value,
@@ -166,33 +192,11 @@ export default {
   components: {
     Button
   },
-  created: function(){
+  created: function() {
     //("Loaded question");
-  }
-};
-
-/**
- * ,
-  mounted: {
-    autogrowTextarea: function() {
-      // AUTO-GROWING TEXTAREA
-      var textContainer, textareaSize, input;
-      var autoSize = function() {
-        // also can use textContent or innerText
-        textareaSize.innerHTML = input.value + "\n";
-      };
-
-      document.addEventListener("DOMContentLoaded", function() {
-        textContainer = document.querySelector(".textarea-container");
-        textareaSize = textContainer.querySelector(".textarea-size");
-        input = textContainer.querySelector("textarea");
-
-        autoSize();
-        input.addEventListener("input", autoSize);
-      });
-    }
   },
- */
+  mounted() {}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

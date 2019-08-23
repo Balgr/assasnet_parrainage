@@ -13,27 +13,21 @@ export default new Vuex.Store({
       state.questions.forEach(questionDansBoucle => {
         if (questionDansBoucle.id === payload.id) {
           questionDansBoucle.reponseDonnee = payload.reponseDonnee;
-          if (questionDansBoucle.type === "multiple") {
-            if (typeof questionDansBoucle.scoreObtenu !== "undefined") {
-              questionDansBoucle.scoreObtenu = questionDansBoucle.reponses.find(function(reponse) {
-                return reponse.reponse === questionDansBoucle.reponseDonnee;
-              }).score;
-            }
-            if (typeof questionDansBoucle.coefficientObtenu !== "undefined") {
-              questionDansBoucle.coefficientObtenu = questionDansBoucle.reponses.find(function(reponse) {
-                return reponse.reponse === questionDansBoucle.reponseDonnee;
-              }).coefficient;
-            }
+          
+          if (typeof payload.score !== "undefined") {
+            questionDansBoucle.scoreObtenu = payload.score;
+          } else if (typeof payload.coefficient !== "undefined") {
+            questionDansBoucle.coefficientObtenu = payload.coefficient;
           }
         }
 
         if (typeof questionDansBoucle.conditions !== "undefined") {
-          for(let condition of questionDansBoucle.conditions) {
+          for (let condition of questionDansBoucle.conditions) {
             let questionToMonitor = state.questions.find(function(el) {
               return condition.answerToQuestionId === el.id;
             });
 
-            if(typeof questionToMonitor !== 'undefined' && questionToMonitor.reponseDonnee === condition.isEqualTo) {
+            if (typeof questionToMonitor !== 'undefined' && questionToMonitor.reponseDonnee === condition.isEqualTo) {
               questionDansBoucle.conditionRemplie = true;
               questionDansBoucle.obligatoire = true;
               break;
@@ -41,7 +35,6 @@ export default new Vuex.Store({
               questionDansBoucle.conditionRemplie = false;
               questionDansBoucle.obligatoire = false;
             }
-            //break;
           }
         }
       });

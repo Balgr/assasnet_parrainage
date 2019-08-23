@@ -1,7 +1,7 @@
 <template>
   <div class="filleul">
-    <vue-scroll-snap :fullscreen="true">
-      <div class="content">
+    <!--<vue-scroll-snap :fullscreen="true">-->
+      <div class="container">
         <div class="form-container">
           <div class="item item-logo">
             <img src="../assets/logo_assasnet.png" class="logo" />
@@ -11,11 +11,8 @@
               class="question-container"
               v-for="question in questions"
               :key="question.id"
-              v-if="
-                typeof question.conditionRemplie === 'undefined' ||
-                  question.conditionRemplie
-              "
-            >
+              v-if="typeof question.conditionRemplie === 'undefined' ||
+                  question.conditionRemplie">
               <QuestionType v-bind:question="question" />
             </div>
             <div class="item item-submit">
@@ -32,7 +29,7 @@
           <ThanksType />
         </div>
       </div>
-    </vue-scroll-snap>
+    <!--</vue-scroll-snap>-->
     <div class="gradientback"></div>
   </div>
 </template>
@@ -283,7 +280,7 @@ export default {
   text-align: left;
 
 .item
-  height: 400px;
+  height: 300px;
 
 .scroll-snap-container
   height: 100%;
@@ -293,10 +290,10 @@ export default {
   margin: auto
   margin-top 300px
 
-.gradientback
+.gradientback  
   position:absolute;
   bottom:0px;
-  left:0px;
+  //left:0px;
   width:100%;
   height:60%;
   background: -moz-linear-gradient(top,  rgba(137,255,241,0) 0%, rgba(0,0,0,0.5) 100%);

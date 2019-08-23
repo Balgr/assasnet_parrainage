@@ -1,14 +1,12 @@
 <template>
   <div class="home">
     <div class="content">
-      <div class="component">
-        <component
-          :is="composantActuel"
-          @formulaire-envoye="afficherRemerciements"
-          @click-form-parrain="devenirParrain"
-          @click-form-filleul="devenirFilleul"
-        />
-      </div>
+      <component
+        :is="composantActuel"
+        @formulaire-envoye="afficherRemerciements"
+        @click-form-parrain="devenirParrain"
+        @click-form-filleul="devenirFilleul"
+      />
     </div>
   </div>
 </template>
@@ -69,65 +67,15 @@ export default {
   height: 100%
   justify-content: center
   align-items: center
-  background-color: #042a5f
   line-height: 1.8em
   border: none
   font-family: 'Karla', Helevetica, Arial, sans-serif
   color: white;
+  background-color: #042a5f
 
-.logo
-  width: 200px
-  margin-bottom: 100px
-
-.parrainage-description
-  width: 80%
-  margin: auto
-  font-size: 1.2em;
-
-.btn
-  position: fixed;
-  bottom: 80px;
-  width: 95%;
-  margin auto;
-
-
-.button
-  display: inline-block
-  margin auto
-  margin-bottom: 25px;
-  margin-top: 25px;
-
-@media screen and (max-width: 599px)
-  h2
-    width: 80%
-    line-height 1.1em
-    font-size: 1.5em
-  .logo
-    width: 150px
-  .welcome-content
-    font-size 1em
-
-
-
-@media screen and (min-width: 600px) and (max-width: 767px)
-  h2
-    width: 100%
-    line-height 1.1em
-    font-size: 2em
-
-
-@media screen and (min-width: 768px) and (max-width: 991px)
-  h2
-    width: 100%
-    line-height 1.1em
-    font-size: 2em
-
-@media screen and (min-width: 992px) and (max-width: 1199px)
-  h2
-    width 75%
-
-@media screen and (min-width: 1200px)
-  h2
-    width: 50%
-
+.content
+  display flex
+  height 100%
+  width 100%
+  background-color: #042a5f
 </style>

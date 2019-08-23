@@ -1,7 +1,7 @@
 <template>
-  <div class="parrainè-  ">
+  <div class="parrain">
     <vue-scroll-snap :fullscreen="true">
-      <div class="content">
+      <div class="container">
         <div class="form-container">
           <div class="item item-logo">
             <img src="../assets/logo_assasnet.png" class="logo" />
@@ -264,19 +264,11 @@ export default {
 <style lang="stylus">
  @import url("https://fonts.googleapis.com/css?family=Karla&display=swap");
 
-.home
-  height: 100vh
-  width: 100vw
-  display: flex
-  justify-content: center
-  align-items: center
-  background-color: #042a5f
-  line-height: 1.8em
-
-.content
+.container
   display: flex
   justify-content: flex-start
   flex-direction: column
+  background-color: #042a5f
 
 .type
   display: flex
