@@ -61,16 +61,21 @@
         },  
         { 
             "id" : 2,
+            "reponse": "Les sciences politiques (c'est pas Sciences Po, mais t'inquiète)",
+            "value": "Sciences Politiques"
+        },  
+        { 
+            "id" : 3,
             "reponse": "Économie-Gestion / AES (c'est sous-côté)",
             "value": "Eco-G"
         },
         { 
-            "id" : 3,
+            "id" : 4,
             "reponse": "L'info-com (il en faut, hein...)",
             "value": "Info-Com"
         },
         {
-            "id": 4,
+            "id": 5,
             "reponse": "Le management (oui, il y a du management à Assas)",
             "value": "Management"
         }
