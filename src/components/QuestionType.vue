@@ -23,6 +23,7 @@
           v-on:keyup.enter="scrollToNextQuestion()"
           v-on:keyup.tab="scrollToNextQuestion()"
           @input="updateAnswer"
+          v-model="inputed"
         />
         <label
           :for="'rps-' + question.id + '-' + reponse.id"
@@ -137,11 +138,17 @@ export default {
     question: Object
   },
   data() {
-    return {};
+    return {
+      inputed: ""
+    };
   },
   methods: {
     updateAnswer(e) {
-      this.$props.question.reponseDonnee = e.target.value;
+      if(this.$data.inputed !== "") {
+        this.$props.question.reponseDonnee = this.$data.inputed;
+      } else {
+        this.$props.question.reponseDonnee = e.target.value;
+      }
       if(this.$props.question.resultat !== "undefined") {
         if(this.$props.question.resultat === "score") {
           let score = this.$props.question.reponses.find(function(r) {
@@ -179,12 +186,6 @@ export default {
       if (typeof $(this.idNextQuestion).find("input")[0] !== "undefined") {
         $(this.idNextQuestion)
           .find("input")[0]
-          .focus();
-      } else if (
-        typeof $(this.idNextQuestion).find("textarea")[0] !== "undefined"
-      ) {
-        $(this.idNextQuestion)
-          .find("textarea")[0]
           .focus();
       }
     }

@@ -6,6 +6,12 @@ import VueScrollTo from "vue-scrollto";
 import JQuery from "jquery";
 import vueSmoothScroll from "vue2-smooth-scroll";
 import axios from "axios";
+import VueMeta from "vue-meta";
+
+Vue.use(VueMeta, {
+  // optional pluginOptions
+  refreshOnceOnNavigation: true
+});
 
 window.$ = JQuery;
 Vue.config.productionTip = false;

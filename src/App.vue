@@ -8,6 +8,35 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    title: "Parrainage Assas.net",
+    meta: [
+      { charset: "utf-8" },
+      {
+        property: "og:title",
+        content: "Parrainage Assas.net"
+      },
+      {
+        property: "og:description",
+        content:
+          "Devenez Parrain ou trouvez-en un grâce à Assas.net ! Prenez un nouvel arrivant à Assas sous votre aile, et que vive l'entraide étudiante !"
+      },
+      {
+        property: "og:url",
+        content: "http://assas.net"
+      },
+      {
+        property: "og:locale",
+        content: "fr_FR"
+      }
+    ]
+  }
+};
+</script>
 
 <style lang="stylus">
 #app
@@ -61,5 +90,4 @@ a
 @media screen and (min-width: 1200px)
   h2
     width: 50%
-
 </style>

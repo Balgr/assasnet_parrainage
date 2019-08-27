@@ -42,7 +42,6 @@ import ThanksType from "@/components/ThanksType.vue";
 import Button from "@/components/elements/Button.vue";
 import loading from "vue-full-loading";
 
-
 import store from "../store.js";
 import HTTP from "../http-common.js";
 
@@ -62,12 +61,13 @@ export default {
   },
   methods: {
     submit: function() {
-      // On affiche l'écran de chargement pour éviter le clic sauvage
-      this.$data.showLoadingOverlay = true;
       // On valide les différentes entrées du formulaire : si ça ne passe pas, on interrompt l'exécution sans rien envoyer et en prévenant l'utilisateur
       if (this.validerFormulaire() === true) {
+        // On affiche l'écran de chargement pour éviter le clic sauvage)
+        this.$data.showLoadingOverlay = true;
         this.craftPostRequest();
 
+        let $this = this;
         HTTP.post("parrains", this.$data.postBody)
           .then(response => {
             if (
@@ -88,6 +88,9 @@ export default {
               { scrollTop: $(document).height() },
               "slow"
             );
+          })
+          .finally(function() {
+            this.$data.showLoadingOverlay = false;
           });
       }
     },

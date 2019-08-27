@@ -64,10 +64,10 @@ export default {
   },
   methods: {
     submit: function() {
-      // On affiche l'écran de chargement pour éviter le clic sauvage
-      this.$data.showLoadingOverlay = true;
       // On valide les différentes entrées du formulaire : si ça ne passe pas, on interrompt l'exécution sans rien envoyer et en prévenant l'utilisateur
       if (this.validerFormulaire() === true) {
+        // On affiche l'écran de chargement pour éviter le clic sauvage)
+        this.$data.showLoadingOverlay = true;
         this.craftPostRequest();
 
         let $this = this;
@@ -77,7 +77,6 @@ export default {
               response.request.status > 200 &&
               response.request.status < 300
             ) {
-              this.$data.showLoadingOverlay = false;
               this.$emit("formulaire-envoye");
               $(".gradientback").css("display", "none");
               $(".form-container").fadeOut();
@@ -86,12 +85,13 @@ export default {
           })
           .catch(function(error) {
             $this.$data.erreurs.push(error.response.data["hydra:description"]);
-            this.$data.showLoadingOverlay = false;
-
             $("html, body, .form-container").animate(
               { scrollTop: $(document).height() },
               "slow"
             );
+          })
+          .finally(function() {
+            this.$data.showLoadingOverlay = false;
           });
       }
     },
