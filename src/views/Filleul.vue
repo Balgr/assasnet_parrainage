@@ -1,5 +1,6 @@
 <template>
   <div class="filleul">
+    <loading :show="showLoadingOverlay" label="Veuillez patienter..."></loading>
     <vue-scroll-snap :fullscreen="true">
       <div class="container">
         <div class="form-container">
@@ -42,9 +43,10 @@ import VueScrollSnap from "vue-scroll-snap";
 import QuestionType from "@/components/QuestionType.vue";
 import ThanksType from "@/components/ThanksType.vue";
 import Button from "@/components/elements/Button.vue";
+import loading from "vue-full-loading";
 
-import store from "../store.js";
-import HTTP from "../http-common.js";
+import store from "@/store.js";
+import HTTP from "@/http-common.js";
 
 export default {
   name: "filleul",
@@ -56,11 +58,14 @@ export default {
       postBody: "",
       erreurs: [],
       score: 50,
-      coefficient: 1
+      coefficient: 1,
+      showLoadingOverlay: false
     };
   },
   methods: {
     submit: function() {
+      // On affiche l'écran de chargement pour éviter le clic sauvage
+      this.$data.showLoadingOverlay = true;
       // On valide les différentes entrées du formulaire : si ça ne passe pas, on interrompt l'exécution sans rien envoyer et en prévenant l'utilisateur
       if (this.validerFormulaire() === true) {
         this.craftPostRequest();
@@ -72,6 +77,7 @@ export default {
               response.request.status > 200 &&
               response.request.status < 300
             ) {
+              this.$data.showLoadingOverlay = false;
               this.$emit("formulaire-envoye");
               $(".gradientback").css("display", "none");
               $(".form-container").fadeOut();
@@ -80,6 +86,8 @@ export default {
           })
           .catch(function(error) {
             $this.$data.erreurs.push(error.response.data["hydra:description"]);
+            this.$data.showLoadingOverlay = false;
+
             $("html, body, .form-container").animate(
               { scrollTop: $(document).height() },
               "slow"
@@ -253,7 +261,8 @@ export default {
     VueScrollSnap,
     QuestionType,
     ThanksType,
-    Button
+    Button,
+    loading
   },
   created: function() {}
 };

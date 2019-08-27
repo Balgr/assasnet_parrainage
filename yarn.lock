@@ -8017,6 +8017,13 @@ vue-eslint-parser@^5.0.0:
     esquery "^1.0.1"
     lodash "^4.17.11"
 
+vue-full-loading@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/vue-full-loading/-/vue-full-loading-1.2.1.tgz#14371ba7b4c858a75c6d8f72f2d1aeeaf02f95a8"
+  integrity sha512-zD5bi2zsmrowQJIg8pF6NThNvnmzDeCg9gtfAH9c+lC3nCHlrxmpYHhi75TQmS3m0myKK17M/Lk25kgZEfgswQ==
+  dependencies:
+    vue "^2.2.1"
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
@@ -8039,11 +8046,6 @@ vue-loader@^15.7.0:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-loading-overlay@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/vue-loading-overlay/-/vue-loading-overlay-3.2.0.tgz#7896f195e26a8d915219139a096367c9ad2c3c61"
-  integrity sha512-QBHa+vwcQ3k3oKp4pucP7RHWHSQvgVWFlDFqSaXLu+kCuEv1PZCoerAo1T04enF5y9yMFCqh7L9ChrWHy7HYvA==
 
 vue-router@^3.0.3:
   version "3.1.1"
@@ -8088,7 +8090,7 @@ vue2-smooth-scroll@^1.1.0:
   resolved "https://registry.yarnpkg.com/vue2-smooth-scroll/-/vue2-smooth-scroll-1.1.0.tgz#892aa4ea3653f7c6e1f31b1af32c9a736588b1b8"
   integrity sha512-3le4wHeeEYVY+UekAYtuqFIidtjUd+6VFyLcCtbT3S26u62bEuT8qHFZ7zNJ4LjiMQMOb7eiBMKtBT7Y0EWj6g==
 
-vue@^2.5.11, vue@^2.6.10:
+vue@^2.2.1, vue@^2.5.11, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
