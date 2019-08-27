@@ -77,6 +77,26 @@
       ]
     },
     {
+      "id": "KZ78yq7BTS",
+      "question": "A...",
+      "type": "multiple",
+      "reponseDonnee": "",
+      "obligatoire": true,
+      "erreurs": "",
+      "reponses": [
+        { 
+            "id" : 1,
+            "reponse": "Paris",
+            "value": "Paris"
+        },  
+        { 
+            "id" : 2,
+            "reponse": "Melun",
+            "value": "Melun"
+        }
+      ]
+    },
+    {
       "id": "kc1qjzOXfe",
       "question": "Et en quelle année ?",
       "type": "multiple",
@@ -133,6 +153,11 @@
             "id" : 3,
             "reponse": "Equipe 3",
             "value": "Equipe 3"
+        },
+        { 
+            "id" : 4,
+            "reponse": "Melun",
+            "value": "Melun"
         }
       ],
       "conditionRemplie": false,
@@ -181,6 +206,11 @@
             "id" : 3,
             "reponse": "Equipe 3",
             "value": "Equipe 3"
+        },
+        { 
+            "id" : 4,
+            "reponse": "Melun",
+            "value": "Melun"
         }
       ],
       "conditionRemplie": false,
@@ -252,6 +282,11 @@
             "id" : 3,
             "reponse": "Equipe 3",
             "value": "Equipe 3"
+        },
+        { 
+            "id" : 4,
+            "reponse": "Melun",
+            "value": "Melun"
         }
       ],
       "conditionRemplie": false,
@@ -280,6 +315,11 @@
             "id" : 2,
             "reponse": "Equipe 2",
             "value": "Equipe 2"
+        },
+        { 
+            "id" : 4,
+            "reponse": "Melun",
+            "value": "Melun"
         }
       ],
       "conditionRemplie": false,

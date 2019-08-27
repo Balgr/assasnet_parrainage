@@ -8,6 +8,7 @@
         @click-form-filleul="devenirFilleul"
       />
     </div>
+    <div class="gradientback"></div>
   </div>
 </template>
 
@@ -78,4 +79,18 @@ export default {
   height 100%
   width 100%
   background-color: #042a5f
+
+.gradientback
+  position fixed;
+  bottom:0px;
+  //left:0px;
+  width:100%;
+  height:60%;
+  background: -moz-linear-gradient(top,  rgba(137,255,241,0) 0%, rgba(0,0,0,0.5) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(137,255,241,0)), color-stop(100%,rgba(0,0,0,0.5)));
+  background: -webkit-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
+  background: -o-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
+  background: -ms-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
 </style>

@@ -8,16 +8,4 @@ const HTTP = axios.create({
   }
 });
 
-HTTP.interceptors.response.use(
-  function(response) {
-    return response;
-  },
-  function(error) {
-    // handle error
-    if (error.response) {
-      alert(error.response.data.message);
-    }
-  }
-);
-
 export default HTTP;

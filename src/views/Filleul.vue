@@ -1,6 +1,6 @@
 <template>
   <div class="filleul">
-    <!--<vue-scroll-snap :fullscreen="true">-->
+    <vue-scroll-snap :fullscreen="true">
       <div class="container">
         <div class="form-container">
           <div class="item item-logo">
@@ -11,17 +11,20 @@
               class="question-container"
               v-for="question in questions"
               :key="question.id"
-              v-if="typeof question.conditionRemplie === 'undefined' ||
-                  question.conditionRemplie">
+              v-if="
+                typeof question.conditionRemplie === 'undefined' ||
+                  question.conditionRemplie
+              "
+            >
               <QuestionType v-bind:question="question" />
             </div>
             <div class="item item-submit">
-              <Button class="btn-submit" @click.native="submit" msg="Envoyer" />
               <ul>
                 <li v-for="(erreur, key) in erreurs" :key="key">
                   {{ erreur }}
                 </li>
               </ul>
+              <Button class="btn-submit" @click.native="submit" msg="Envoyer" />
             </div>
           </form>
         </div>
@@ -29,8 +32,7 @@
           <ThanksType />
         </div>
       </div>
-    <!--</vue-scroll-snap>-->
-    <div class="gradientback"></div>
+    </vue-scroll-snap>
   </div>
 </template>
 
@@ -63,35 +65,27 @@ export default {
       if (this.validerFormulaire() === true) {
         this.craftPostRequest();
 
-        //console.log(this.$data.postBody);
-
+        let $this = this;
         HTTP.post("filleuls", this.$data.postBody)
           .then(response => {
-            this.$emit('formulaire-envoye');
-          })
-          .catch(e => {
-            if (e.response) {
-              this.$data.erreurs.push(
-                "Une erreur s'est produite lors de l'envoi des données au serveur. Veuillez contacter le webmaster (webmaster@assas.net).<br>Erreur " +
-                  e.response.status
-              );
-            } else {
-              this.$data.erreurs.push(
-                "Une erreur inconnue s'est produite. Veuillez contacter le webmaster (webmaster@assas.net).<br>" +
-                  e.message
-              );
+            if (
+              response.request.status > 200 &&
+              response.request.status < 300
+            ) {
+              this.$emit("formulaire-envoye");
+              $(".gradientback").css("display", "none");
+              $(".form-container").fadeOut();
+              $(".thanks-container").fadeIn(500);
             }
+          })
+          .catch(function(error) {
+            $this.$data.erreurs.push(error.response.data["hydra:description"]);
+            $("html, body, .form-container").animate(
+              { scrollTop: $(document).height() },
+              "slow"
+            );
           });
-
-        // Si on reçoit une réponse 201 de l'API, on affiche le message de remerciement.
-        $(".gradientback").css("display", "none");
-        $(".form-container").fadeOut();
-        $(".thanks-container").fadeIn(500);
-
-        // Sinon, on affiche une erreur.
-      } else {
       }
-      // Si ça passe, on fadeOut le formulaire et on affiche le .thanks-container à la place
     },
     validerFormulaire() {
       // On efface toutes les erreurs précédentes
@@ -133,7 +127,7 @@ export default {
         // Si la question propose des choix multiples, on vérifie que la réponse donnée est bien l'un des choix proposés et pas autre chose
         if (question.type === "multiple" && question.reponseDonnee !== "") {
           if (
-            question.reponses.filter(r => r.reponse === question.reponseDonnee)
+            question.reponses.filter(r => r.value === question.reponseDonnee)
               .length == 0
           ) {
             this.$store.commit({
@@ -177,6 +171,9 @@ export default {
       ).reponseDonnee;
       obj["anneeActuelle"] = this.questions.find(
         el => el.id === "kc1qjzOXfe"
+      ).reponseDonnee;
+      obj["centre"] = this.questions.find(
+        el => el.id === "KZ78yq7BTS"
       ).reponseDonnee;
 
       // Si l'étudiant est en L1
@@ -258,9 +255,7 @@ export default {
     ThanksType,
     Button
   },
-  created: function() {
-    //console.log("Loaded filleul");
-  }
+  created: function() {}
 };
 </script>
 
@@ -289,20 +284,6 @@ export default {
 .btn-submit
   margin: auto
   margin-top 300px
-
-.gradientback  
-  position:absolute;
-  bottom:0px;
-  //left:0px;
-  width:100%;
-  height:60%;
-  background: -moz-linear-gradient(top,  rgba(137,255,241,0) 0%, rgba(0,0,0,0.5) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(137,255,241,0)), color-stop(100%,rgba(0,0,0,0.5)));
-  background: -webkit-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
-  background: -o-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
-  background: -ms-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
-  background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(0,0,0,0.5) 100%);
-  pointer-events: none;
 
 .item-submit
   height: 300px
